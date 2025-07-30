@@ -1,0 +1,191 @@
+{
+  "main": {
+    "id": "8d3361ebd78aa338",
+    "type": "split",
+    "children": [
+      {
+        "id": "0b8cbcd9209be3fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6950494167eebb1a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "zh/controls-reference/UniDeskAcrylic.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "UniDeskAcrylic"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "da0e96be47409ee9",
+    "type": "split",
+    "children": [
+      {
+        "id": "a81e897fcb25d3cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3999c7e161fe7369",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "f7c36d3b5d586298",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "235aab3dbdffd81d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "15b435dae32040f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "5713df10d97c3f37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3ead9fd3ab894973",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "zh/controls-reference/UniDeskAcrylic.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "UniDeskAcrylic 的反向链接列表"
+            }
+          },
+          {
+            "id": "637a146384b71258",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "zh/controls-reference/UniDeskAcrylic.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "UniDeskAcrylic 的出链列表"
+            }
+          },
+          {
+            "id": "0a5b5e1e2dae8c1f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "6de545170f8fac5f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "zh/controls-reference/UniDeskAcrylic.md"
+              },
+              "icon": "lucide-list",
+              "title": "UniDeskAcrylic 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "6950494167eebb1a",
+  "lastOpenFiles": [
+    "zh/controls-reference/singletons/UniDeskTools.md",
+    "zh/controls-reference/singletons/UniDeskTextStyle.md",
+    "zh/controls-reference/singletons/UniDeskSettingsWindow.md",
+    "zh/controls-reference/singletons/UniDeskSettings.md",
+    "zh/controls-reference/singletons/UniDeskGlobals.md",
+    "zh/controls-reference/singletons/UniDeskComManager.md",
+    "zh/controls-reference/overview.md",
+    "zh/controls-reference/bases/UniDeskWindowBase.md",
+    "zh/controls-reference/bases/UniDeskBase.md",
+    "zh/controls-reference/UniDeskDialog.md",
+    "zh/controls-reference/UniDeskComboBox.md",
+    "zh/controls-reference/UniDeskComBase.md",
+    "zh/controls-reference/UniDeskColorPicker.md",
+    "zh/controls-reference/UniDeskCheckBox.md",
+    "zh/controls-reference/UniDeskChart.md",
+    "zh/controls-reference/UniDeskButton.md",
+    "zh/controls-reference/UniDeskAcrylic.md",
+    "zh/components-wiki/overview.md",
+    "zh/controls-reference/singletons/UniDeskBases.md",
+    "zh/controls-reference/bases",
+    "zh/controls-reference/singletons/UniDeskData.md",
+    "zh/controls-reference/singletons/UniDeskGlobals",
+    "zh/controls-reference/singletons"
+  ]
+}
