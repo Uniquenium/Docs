@@ -7,7 +7,8 @@ hero:
   text: "高效的指南"
   tagline: 掌握 Uniquenium 的每一步
   image:
-    src: /uq-l-bg.png
+    light: /uq-l.png
+    dark: /uq-d.png
     alt: 背景图片
   actions:
     - theme: brand

@@ -2,11 +2,11 @@
 title: UniDeskButton
 editLink: true
 ---
-# UniDeskSettingsWindow 类型
-本控件是一个具体单项，是Uniquenium的设置窗口
+# UniDeskButton 类型
+一个按钮
 
-| 控件类型    |     |
-| ------- | --- |
-| 源代码文件路径 |     |
-| 继承      |     |
+| 控件类型    | 元件                                                                          |
+| ------- | --------------------------------------------------------------------------- |
+| 源代码文件路径 | `Unidesk/UniDeskButton.qml`                                                 |
+| 继承      | [QtQuick Button](https://doc.qt.io/qt-6.8/qml-qtquick-controls-button.html) |
 

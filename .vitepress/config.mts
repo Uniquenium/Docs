@@ -18,7 +18,10 @@ export default defineConfig({
                     { text: '使用指南', link: '/zh/components-wiki/overview' },
                     { text: '开发参考', link: '/zh/controls-reference/overview' }
                 ],
-                logo: "/uniquenium-l-bg.png",
+                logo: {
+                    light:"/uniquenium-l.png",  
+                    dark:"/uniquenium-d.png",
+                },
                 search: {
                     provider: 'local'
                 },  
@@ -27,7 +30,7 @@ export default defineConfig({
                     text: '在 Github 上编辑此页面'
                 },
                 lastUpdated: {
-                    text: 'Updated at',
+                    text: '最后更新',
                     formatOptions: {
                         dateStyle: 'full',
                         timeStyle: 'medium'
@@ -114,4 +117,5 @@ export default defineConfig({
             }
         }
     },
+    base: "/docs"
 })
