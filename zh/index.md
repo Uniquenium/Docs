@@ -21,7 +21,7 @@ hero:
 features:
   - title: 快速开始
     link: /zh/quick-start/install.md
-  - title: 组件库百科
+  - title: 组件百科
     link: /zh/components-wiki/overview.md
   - title: 控件库使用参考
     link: /zh/controls-reference/overview.md
@@ -30,6 +30,6 @@ features:
   - title: FAQ
     link: /zh/faq.md
   - title: 关于
-    link: /zh/history.md
+    link: /zh/about.md
 ---
 

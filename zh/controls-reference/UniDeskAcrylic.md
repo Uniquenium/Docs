@@ -3,7 +3,7 @@ title: UniDeskAcrylic
 editLink: true
 ---
 
-# UniDeskSettingsAcrylic 类型
+# UniDeskAcrylic 类型
 毛玻璃效果控件
 
 | 控件类型    | 元件                                                             |

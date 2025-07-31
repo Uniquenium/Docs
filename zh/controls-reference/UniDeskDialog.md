@@ -2,11 +2,12 @@
 title: UniDeskDialog
 editLink: true
 ---
-# UniDeskSettingsWindow 类型
-本控件是一个具体单项，是Uniquenium的设置窗口
+# UniDeskDialog 类型
+基本对话框
 
-| 控件类型    |     |
-| ------- | --- |
-| 源代码文件路径 |     |
-| 继承      |     |
+| 控件类型    | 元件                               |
+| ------- | -------------------------------- |
+| 源代码文件路径 | `UniDesk/UniDeskDialog.qml`      |
+| 继承      | [UniDeskWindow](./UniDeskWindow) |
 
+与[UniDeskWindow](./UniDeskWindow)不同的是，UniDeskDialog不支持最大化和改变尺寸。

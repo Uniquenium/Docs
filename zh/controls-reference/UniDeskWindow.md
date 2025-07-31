@@ -3,13 +3,13 @@ title: UniDeskWindow
 editLink: true
 ---
 
-# UniDeskSettingsWindow 类型
-毛玻璃效果控件
+# UniDeskWindow 类型
+基本窗口
 
-| 控件类型    | 元件                                                             |
-| ------- | -------------------------------------------------------------- |
-| 源代码文件路径 | `UniDesk/UniDeskWindow.qml`                                    |
-| 继承      | [QtQuick Item](https://doc.qt.io/qt-6.8/qml-qtquick-item.html) |
+| 控件类型    | 元件                                             |
+| ------- | ---------------------------------------------- |
+| 源代码文件路径 | `UniDesk/UniDeskWindow.qml`                    |
+| 继承      | [UniDeskWindowBase](./bases/UniDeskWindowBase) |
 ## 属性
 
 ### `property color tintColor`
