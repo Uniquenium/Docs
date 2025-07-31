@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "zh/controls-reference/UniDeskTextButton.md",
+                "file": "zh/controls-reference/UniDeskMessageBox.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "UniDeskTextButton"
+              "title": "UniDeskMessageBox"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "zh/controls-reference/UniDeskTextButton.md"
+                "file": "zh/controls-reference/UniDeskMessageBox.md"
               },
               "icon": "lucide-list",
-              "title": "UniDeskTextButton 的大纲"
+              "title": "UniDeskMessageBox 的大纲"
             }
           }
         ],
@@ -164,33 +164,33 @@
   },
   "active": "6950494167eebb1a",
   "lastOpenFiles": [
+    "zh/controls-reference/UniDeskMenuItem.md",
+    "zh/controls-reference/UniDeskFrame.md",
+    "zh/controls-reference/UniDeskIcon.md",
+    "zh/controls-reference/UniDeskComBase.md",
+    "zh/controls-reference/UniDeskComboBox.md",
+    "zh/controls-reference/UniDeskDialog.md",
+    "zh/controls-reference/UniDeskFontBox.md",
+    "zh/controls-reference/UniDeskCheckBox.md",
+    "zh/controls-reference/UniDeskMenu.md",
+    "zh/controls-reference/UniDeskMenuSeparator.md",
+    "zh/controls-reference/UniDeskMessageBox.md",
+    "zh/controls-reference/UniDeskRadioButton.md",
+    "zh/controls-reference/UniDeskPathSelector.md",
+    "zh/controls-reference/UniDeskObject.md",
+    "zh/controls-reference/UniDeskWindow.md",
+    "zh/controls-reference/UniDeskTooltip.md",
+    "zh/controls-reference/UniDeskTextField.md",
+    "zh/controls-reference/UniDeskTextButton.md",
     "zh/controls-reference/UniDeskTextArea.md",
     "zh/controls-reference/UniDeskText.md",
     "zh/controls-reference/UniDeskTabButton.md",
     "zh/controls-reference/UniDeskTabBar.md",
     "zh/controls-reference/UniDeskSpinBox.md",
-    "zh/controls-reference/UniDeskRadioButton.md",
-    "zh/controls-reference/UniDeskPathSelector.md",
-    "zh/controls-reference/UniDeskObject.md",
-    "zh/controls-reference/UniDeskMessageBox.md",
     "zh/controls-reference/UniDeskColorPicker.md",
-    "zh/controls-reference/UniDeskMenuSeparator.md",
-    "zh/controls-reference/UniDeskTextButton.md",
-    "zh/controls-reference/UniDeskTextField.md",
-    "zh/controls-reference/UniDeskTooltip.md",
-    "zh/controls-reference/UniDeskWindow.md",
-    "zh/controls-reference/UniDeskMenuItem.md",
-    "zh/controls-reference/UniDeskIcon.md",
-    "zh/controls-reference/UniDeskFrame.md",
-    "zh/controls-reference/UniDeskFontBox.md",
     "Pasted image 20250731180629.png",
-    "zh/controls-reference/UniDeskDialog.md",
-    "zh/controls-reference/UniDeskMenu.md",
     "zh/about.md",
-    "zh/controls-reference/UniDeskComboBox.md",
     "zh/controls-reference/bases/UniDeskBase.md",
-    "zh/index.md",
-    "zh/components-wiki/overview.md",
     "zh/controls-reference/bases",
     "zh/controls-reference/singletons/UniDeskGlobals",
     "zh/controls-reference/singletons"

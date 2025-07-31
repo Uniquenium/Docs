@@ -9,3 +9,4 @@ editLink: true
 | ------- | ------------------------------------ |
 | 源代码文件路径 | `UniDesk/UniDeskFontBox.qml`         |
 | 继承      | [UniDeskComboBox](./UniDeskComboBox) |
+本控件用法请参见继承控件的文档。

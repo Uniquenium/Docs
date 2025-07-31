@@ -13,23 +13,23 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /zh/quick-start/install.md
+      link: /quick-start/install.md
     - theme: alt
       text: Github
       link: https://github.com/Uniquenium/Uniquenium
 
 features:
   - title: 快速开始
-    link: /zh/quick-start/install.md
+    link: /quick-start/install.md
   - title: 组件百科
-    link: /zh/components-wiki/overview.md
+    link: /components-wiki/overview.md
   - title: 控件库使用参考
-    link: /zh/controls-reference/overview.md
+    link: /controls-reference/overview.md
   - title: 历史
-    link: /zh/history.md
+    link: /history.md
   - title: FAQ
-    link: /zh/faq.md
+    link: /faq.md
   - title: 关于
-    link: /zh/about.md
+    link: /about.md
 ---
 

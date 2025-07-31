@@ -11,3 +11,4 @@ editLink: true
 | 继承      | [UniDeskWindow](./UniDeskWindow) |
 
 与[UniDeskWindow](./UniDeskWindow)不同的是，UniDeskDialog不支持最大化和改变尺寸。
+本控件用法请参见继承控件的文档
