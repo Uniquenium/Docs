@@ -6,10 +6,10 @@ editLink: true
 # UniDeskWindow 类型
 基本窗口
 
-| 控件类型    | 元件                                             |
-| ------- | ---------------------------------------------- |
-| 源代码文件路径 | `UniDesk/UniDeskWindow.qml`                    |
-| 继承      | [UniDeskWindowBase](./bases/UniDeskWindowBase) |
+| 控件类型    | 可视化控件（Control）                    |
+| ------- | -------------------------------- |
+| 源代码文件路径 | `UniDesk/Controls/UniDeskWindow.qml` |
+| 继承      | QtQuick Window                   |
 ## 属性
 
 ### `property string minimizeText`

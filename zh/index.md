@@ -3,33 +3,240 @@
 layout: home
 
 hero:
-  name: "Uniquenium 文档中心"
-  text: "高效的指南"
-  tagline: 掌握 Uniquenium 的每一步
+  name: "Uniquenium"
+  text: "创造无限可能"
+  tagline: 集美化与实用功能于一体的开源桌面自定义工具
   image:
     light: /uq-l.png
     dark: /uq-d.png
-    alt: 背景图片
+    alt: Uniquenium Logo
   actions:
     - theme: brand
+      text: 立即下载
+      link: /download.md
+    - theme: alt
       text: 快速开始
       link: /quick-start/install.md
     - theme: alt
-      text: Github
+      text: GitHub
       link: https://github.com/Uniquenium/Uniquenium
 
 features:
-  - title: 快速开始
-    link: /quick-start/install.md
-  - title: 组件百科
-    link: /components-wiki/overview.md
-  - title: 控件库使用参考
+  - title: 🎨 精美界面
+    icon: 🎨
+    details: 采用现代 Fluent 设计风格，支持深色/浅色主题切换，提供 Acrylic 亚克力模糊效果
+    link: /components-wiki/overview.md#主题切换
+    linkText: 了解主题设置
+
+  - title: 🧩 丰富控件
+    icon: 🧩
+    details: 内置 UniDesk 控件库，包含 30+ 种精美 QML 控件，轻松构建桌面界面
     link: /controls-reference/overview.md
-  - title: 历史
-    link: /history.md
-  - title: FAQ
-    link: /faq.md
-  - title: 关于
-    link: /about.md
+    linkText: 查看控件库
+
+  - title: 🔌 插件系统
+    icon: 🔌
+    details: 灵活的插件架构，支持扩展自定义组件和功能，打造专属桌面体验
+    link: /custom-developing/plugin.md
+    linkText: 开发插件
+
+  - title: ⚡ 快捷键支持
+    icon: ⚡
+    details: 全局热键绑定，快速启动应用、切换页面、执行操作，效率倍增
+    link: /components-wiki/overview.md#快捷键设置
+    linkText: 设置快捷键
+
+  - title: 📐 可视化编辑
+    icon: 📐
+    details: 所见即所得的组件编辑器，拖拽式布局，轻松调整位置和属性
+    link: /components-wiki/overview.md#组件属性编辑
+    linkText: 开始编辑
+
+  - title: 🎯 模板系统
+    icon: 🎯
+    details: 支持组件模板导出与导入，快速复用优秀布局设计
+    link: /custom-developing/template.md
+    linkText: 使用模板
+
+  - title: 🪟 无边框窗口
+    icon: 🪟
+    details: 自定义无边框窗口技术，支持窗口毛玻璃效果、自定义标题栏
+    link: /controls-reference/UniDeskWindow.md
+    linkText: 窗口控件
+
+  - title: 🌐 跨平台兼容
+    icon: 🌐
+    details: 基于 Qt 框架开发，支持 Windows 系统（Linux 支持开发中）
+    link: /download.md
+    linkText: 查看系统要求
 ---
 
+## Uniquenium 是什么？
+
+**Uniquenium** 是一款开源的桌面自定义工具，致力于为用户提供一个集美化与实用功能于一体的桌面扩展平台。它基于 **C++/Qt** 和 **QML** 技术栈构建，拥有自己的 UI 控件库 **UniDesk**，让你的桌面焕然一新。
+
+### 架构总览
+
+<div align="center">
+
+```mermaid
+sequenceDiagram
+    participant User as 用户
+    box #e1f5fe 扩展层
+        participant Ext as 插件/模板/主题
+    end
+    box #f3e5f5 表现层
+        participant Pres as 页面/组件/窗口
+    end
+    box #e8f5e9 控件库
+        participant Lib as 控件/单例
+    end
+    box #fff3e0 逻辑层
+        participant Log as 业务/持久化/表达式
+    end
+    box #fce4ec 集成层
+        participant Int as 平台/热键/托盘/壁纸/光标
+    end
+    box #eceff1 依赖
+        participant Dep as Qt/QHotkey/exprtk
+    end
+
+    Note over User,Dep: 应用启动流程
+
+    User->>+Int: 启动 Uniquenium
+    Int->>Dep: 创建 QApplication (Qt)
+    Dep->>Pres: 加载 QML 引擎
+    Pres->>Int: 创建无边框透明窗口
+    Pres->>Lib: 初始化全局单例
+    Lib->>Log: 读取设置 components.json
+    Log-->>Lib: 返回设置数据
+    Lib->>Ext: 加载主题 ThemeManager
+    Ext->>Pres: 应用主题样式
+    Ext->>Int: 加载自定义光标
+    Int->>Int: 设置系统光标
+    Lib->>Int: 初始化系统托盘
+    Lib->>Int: 注册全局热键
+    Int->>Dep: 绑定快捷键 (QHotkey)
+    Dep->>Ext: 加载插件 DLL
+    Ext->>Log: 注入自定义组件
+    Lib->>Pres: 加载页面列表
+    Pres->>Log: 读取页面布局
+    Log-->>Pres: 返回页面数据
+    Pres->>Lib: 加载组件
+    Lib->>Log: 读取组件数据
+    Log-->>Lib: 返回组件配置
+    Lib->>Pres: 渲染桌面组件
+    Pres->>Lib: 使用基础控件渲染
+    Pres->>Int: 初始化壁纸引擎
+    Int->>Log: 请求动态壁纸
+    Log->>Dep: 执行表达式求值 (exprtk)
+    Dep-->>Log: 返回壁纸 URL
+    Log-->>Int: 壁纸地址
+    Int->>Int: 设置系统壁纸层
+    Int->>Pres: 启动完成
+
+    Note over User,Dep: 用户交互流程
+
+    User->>+Pres: 点击组件
+    Pres->>Log: 触发组件操作
+    Log->>Lib: ComManager 事件分发
+    Lib->>Pres: 更新页面状态
+    Pres->>Log: 保存变更
+    Log->>Int: 写入 JSON 文件
+    Int-->>Log: 写入成功
+    Log->>Log: 计算动态属性
+    Log->>Dep: 表达式求值 (exprtk)
+    Dep-->>Log: 返回结果
+    Log-->>Pres: 刷新组件
+    Pres->>Lib: 更新控件显示
+    Lib-->>Pres: 渲染完成
+    Pres->>Pres: 交互结束
+
+    Note over User,Dep: 扩展使用流程
+
+    User->>+Ext: 保存模板
+    Ext->>Log: 读取当前布局
+    Log-->>Ext: 返回组件数据
+    Ext->>Int: 导出 JSON/ZIP
+    Int-->>Ext: 导出完成
+
+    User->>+Ext: 切换主题
+    Ext->>Lib: 更新主题配置
+    Lib->>Log: 持久化设置
+    Ext->>Pres: 应用新主题样式
+    Ext->>Int: 切换光标
+
+    User->>+Int: 触发热键
+    Int->>Dep: 热键触发 (QHotkey)
+    Dep-->>Int: 快捷键事件
+    Int->>Lib: 执行绑定操作
+    Lib->>Pres: 切换页面
+    Pres->>Pres: 更新组件显示
+```
+
+</div>
+
+| 层级 | 技术栈 | 核心职责 |
+|------|--------|----------|
+| **🔌 扩展层** | QML / C++ DLL | 插件动态加载、模板导入导出、主题与光标样式切换 |
+| **🎨 表现层** | QML / Qt Quick | 多页面管理、组件拖拽编辑、无边框窗口渲染 |
+| **🧩 控件库** | QML + C++ (UniDesk) | 40+ 自研控件、桌面容器组件、全局单例对象 |
+| **⚙️ 逻辑层** | C++17 / Qt6 | 数据持久化、业务调度、表达式引擎求值 |
+| **🖥️ 集成层** | Win32 API / QHotkey | 平台 API、全局热键、系统托盘、壁纸引擎、光标管理 |
+| **📦 依赖** | Qt 6.5+ / QHotkey / exprtk | 跨平台框架、热键库、表达式求值库 |
+
+## 核心特性
+
+::: tip 技术栈
+- **前端渲染**：QML / Qt Quick
+- **后端逻辑**：C++17 / Qt6
+- **UI 库**：UniDesk（自研控件库）
+- **扩展支持**：插件系统 + 模板系统
+:::
+
+### 桌面美化
+- 自定义壁纸层，支持多图轮播和网络壁纸 API
+- 全局光标样式自定义
+- 窗口透明与亚克力模糊效果
+
+### 实用工具
+- 组件化桌面面板（待办、时钟、天气、日历等）
+- 系统托盘图标与快速菜单
+- 全局快捷键绑定
+
+### 开发者友好
+- 完整的 UniDesk 控件库文档
+- 插件开发指南与 API 参考
+- 可视化组件编辑器
+
+## 快速开始
+
+```bash
+# 克隆项目
+git clone https://github.com/Uniquenium/Uniquenium.git
+cd Uniquenium
+git submodule update --init --recursive
+
+# 构建（需要 CMake 3.25+ 和 Qt 6.5+）
+cmake -B build -DCMAKE_PREFIX_PATH="<你的Qt6安装路径>"
+cmake --build build --config Release
+
+# 运行
+./build/Uniquenium0
+```
+
+还需要帮助？查看 [安装指南](/quick-start/install.md) 或 [常见问题](/faq.md)。
+
+## 加入社区
+
+遇到问题或想要贡献代码？欢迎通过以下方式联系我们：
+
+- 💻 [GitHub 仓库](https://github.com/Uniquenium/Uniquenium) - 提交 Issue 与 PR
+- 📖 [DeepWiki 文档](https://deepwiki.com/Uniquenium/Uniquenium) - 交互式文档
+- 🐛 [问题反馈](https://github.com/Uniquenium/Uniquenium/issues) - 报告 Bug
+
+---
+
+::: info 🤖 AI 生成声明
+本网站文档由 AI 辅助生成，可能存在表述偏差、信息过时或与实际代码不一致之处。如果你发现任何错误或有改进建议，欢迎通过 [GitHub Issues](https://github.com/Uniquenium/Uniquenium/issues) 反馈，或直接 [编辑此页面](https://github.com/Uniquenium/Docs/edit/main/zh/index.md) 提交 PR。
+:::

@@ -1,5 +1,4 @@
-# Docs
-The documentation center of Uniquenium
+The Official Website of Uniquenium
 
 # Run
 ```sh
