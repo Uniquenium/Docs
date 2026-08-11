@@ -1,0 +1,1 @@
+import{_ as e,c as s,o as t,a0 as i}from"./chunks/framework.oTSD2LDJ.js";const _=JSON.parse('{"title":"Run","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),n={name:"README.md"};function r(o,a,p,l,d,c){return t(),s("div",null,a[0]||(a[0]=[i("",3)]))}const u=e(n,[["render",r]]);export{_ as __pageData,u as default};
