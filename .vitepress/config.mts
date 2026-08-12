@@ -17,7 +17,253 @@ export default withMermaid(defineConfig({
     locales: {
         en: { 
             label: 'English',
+            lang: 'en-US',
             link: '/en/',
+            themeConfig: {
+                nav: [
+                    { text: 'Home', link: '/en/' },
+                    { 
+                        text: 'Getting Started', 
+                        items: [
+                            { text: 'Download', link: '/en/download.md' },
+                            { text: 'Installation Guide', link: '/en/quick-start/install.md' },
+                        ]
+                    },
+                    { 
+                        text: 'User Guide', 
+                        items: [
+                            { text: 'Components Overview', link: '/en/components-wiki/overview.md' },
+                            { text: 'Glossary', link: '/en/glossary.md' },
+                            { text: 'FAQ', link: '/en/faq.md' },
+                        ]
+                    },
+                    { 
+                        text: 'Development', 
+                        items: [
+                            { text: 'Controls Reference', link: '/en/controls-reference/overview.md' },
+                            { text: 'Custom Development', link: '/en/custom-developing/plugin.md' },
+                        ]
+                    },
+                    { text: 'About', link: '/en/about.md' }
+                ],
+                logo: {
+                    light:"/uniquenium-l.png",  
+                    dark:"/uniquenium-d.png",
+                    alt: 'Uniquenium Logo'
+                },
+                search: {
+                    provider: 'local',
+                    options: {
+                        miniSearch: {
+                            options: {
+                                fuzzy: 0.2,
+                                prefix: true
+                            }
+                        },
+                        translations: {
+                            button: {
+                                buttonText: 'Search Docs',
+                                buttonAriaLabel: 'Search documentation'
+                            },
+                            modal: {
+                                noResultsText: 'No results found',
+                                resetButtonTitle: 'Clear search',
+                                footer: {
+                                    selectText: 'Select',
+                                    navigateText: 'Navigate',
+                                    closeText: 'Close'
+                                },
+                                displayDetails: 'Show details'
+                            }
+                        }
+                    }
+                },
+                editLink: {
+                    pattern: 'https://github.com/Uniquenium/Docs/edit/main/:path',
+                    text: 'Edit this page on GitHub'
+                },
+                lastUpdated: {
+                    text: 'Last updated',
+                    formatOptions: {
+                        dateStyle: 'full',
+                        timeStyle: 'medium'
+                    }
+                },
+                docFooter: {
+                    prev: 'Previous',
+                    next: 'Next'
+                },
+                sidebar: {
+                    '/en/quick-start/': [
+                        {
+                            text: 'Getting Started',
+                            items: [
+                                { text: 'Download Uniquenium', link: '/en/download.md' },
+                                { text: 'Installation Guide', link: '/en/quick-start/install.md' },
+                            ]
+                        }
+                    ],
+                    '/en/components-wiki/': [
+                        {
+                            text: 'User Guide',
+                            items: [
+                                { text: 'Components Overview', link: '/en/components-wiki/overview.md' },
+                                { text: 'Glossary', link: '/en/glossary.md' },
+                            ]
+                        },
+                        {
+                            text: 'Basic Operations',
+                            items: [
+                                { text: 'Interface', link: '/en/components-wiki/overview.md#interface' },
+                                { text: 'Creating Pages', link: '/en/components-wiki/overview.md#creating-pages' },
+                                { text: 'Adding Components', link: '/en/components-wiki/overview.md#adding-components' },
+                                { text: 'Component Properties', link: '/en/components-wiki/overview.md#component-properties' },
+                            ]
+                        },
+                        {
+                            text: 'Advanced Features',
+                            items: [
+                                { text: 'Keyboard Shortcuts', link: '/en/components-wiki/overview.md#keyboard-shortcuts' },
+                                { text: 'Theme Switching', link: '/en/components-wiki/overview.md#theme-switching' },
+                                { text: 'Using Templates', link: '/en/custom-developing/template.md' },
+                                { text: 'Plugin Development', link: '/en/custom-developing/plugin.md' },
+                                { text: 'Custom Cursors', link: '/en/custom-developing/cursor-style.md' },
+                            ]
+                        }
+                    ],
+                    '/en/custom-developing/': [
+                        {
+                            text: 'Custom Development',
+                            items: [
+                                { text: 'Plugin Development Guide', link: '/en/custom-developing/plugin.md' },
+                                { text: 'Template System', link: '/en/custom-developing/template.md' },
+                                { text: 'Custom Cursor Styles', link: '/en/custom-developing/cursor-style.md' },
+                            ]
+                        }
+                    ],
+                    '/en/controls-reference/': [
+                        {
+                            text: 'UniDesk Development',
+                            items: [
+                                { text: 'Overview', link: '/en/controls-reference/overview.md' },
+                                { text: 'Glossary', link: '/en/glossary.md' },
+                                { text: 'System Requirements', link: '/en/controls-reference/overview.md#system-requirements' },
+                                { text: 'Setting Up Environment', link: '/en/controls-reference/overview.md#setting-up-environment' },
+                            ]
+                        },
+                        {
+                            text: 'Singletons',
+                            items: [
+                                { text: 'UniDeskComManager', link: '/en/controls-reference/singletons/UniDeskComManager.md' },
+                                { text: 'UniDeskGlobals', link: '/en/controls-reference/singletons/UniDeskGlobals.md' },
+                                { text: 'UniDeskSettings', link: '/en/controls-reference/singletons/UniDeskSettings.md' },
+                                { text: 'UniDeskSettingsWindow', link: '/en/controls-reference/singletons/UniDeskSettingsWindow.md' },
+                                { text: 'UniDeskTextStyle', link: '/en/controls-reference/singletons/UniDeskTextStyle.md' },
+                                { text: 'UniDeskTools', link: '/en/controls-reference/singletons/UniDeskTools.md' },
+                            ]
+                        },
+                        {
+                            text: 'Windows & Containers',
+                            items: [
+                                { text: 'UniDeskWindow', link: '/en/controls-reference/UniDeskWindow.md' },
+                                { text: 'UniDeskDialog', link: '/en/controls-reference/UniDeskDialog.md' },
+                                { text: 'UniDeskFrame', link: '/en/controls-reference/UniDeskFrame.md' },
+                                { text: 'UniDeskAcrylic', link: '/en/controls-reference/UniDeskAcrylic.md' },
+                                { text: 'UniDeskAppBar', link: '/en/controls-reference/UniDeskAppBar.md' },
+                                { text: 'UniDeskShadow', link: '/en/controls-reference/UniDeskShadow.md' },
+                            ]
+                        },
+                        {
+                            text: 'Buttons',
+                            items: [
+                                { text: 'UniDeskButton', link: '/en/controls-reference/UniDeskButton.md' },
+                                { text: 'UniDeskTextButton', link: '/en/controls-reference/UniDeskTextButton.md' },
+                                { text: 'UniDeskIcon', link: '/en/controls-reference/UniDeskIcon.md' },
+                            ]
+                        },
+                        {
+                            text: 'Input',
+                            items: [
+                                { text: 'UniDeskTextField', link: '/en/controls-reference/UniDeskTextField.md' },
+                                { text: 'UniDeskTextArea', link: '/en/controls-reference/UniDeskTextArea.md' },
+                                { text: 'UniDeskSpinBox', link: '/en/controls-reference/UniDeskSpinBox.md' },
+                                { text: 'UniDeskComboBox', link: '/en/controls-reference/UniDeskComboBox.md' },
+                                { text: 'UniDeskFontBox', link: '/en/controls-reference/UniDeskFontBox.md' },
+                                { text: 'UniDeskPathSelector', link: '/en/controls-reference/UniDeskPathSelector.md' },
+                                { text: 'UniDeskColorPicker', link: '/en/controls-reference/UniDeskColorPicker.md' },
+                                { text: 'UniDeskSlider', link: '/en/controls-reference/UniDeskSlider.md' },
+                                { text: 'UniDeskHotkeyPicker', link: '/en/controls-reference/UniDeskHotkeyPicker.md' },
+                            ]
+                        },
+                        {
+                            text: 'Selection',
+                            items: [
+                                { text: 'UniDeskCheckBox', link: '/en/controls-reference/UniDeskCheckBox.md' },
+                                { text: 'UniDeskRadioButton', link: '/en/controls-reference/UniDeskRadioButton.md' },
+                            ]
+                        },
+                        {
+                            text: 'Text & Display',
+                            items: [
+                                { text: 'UniDeskText', link: '/en/controls-reference/UniDeskText.md' },
+                                { text: 'UniDeskImage', link: '/en/controls-reference/UniDeskImage.md' },
+                                { text: 'UniDeskChart', link: '/en/controls-reference/UniDeskChart.md' },
+                                { text: 'UniDeskTooltip', link: '/en/controls-reference/UniDeskTooltip.md' },
+                                { text: 'UniDeskInfoBar', link: '/en/controls-reference/UniDeskInfoBar.md' },
+                                { text: 'UniDeskMessageBox', link: '/en/controls-reference/UniDeskMessageBox.md' },
+                            ]
+                        },
+                        {
+                            text: 'Navigation & Tabs',
+                            items: [
+                                { text: 'UniDeskTabBar', link: '/en/controls-reference/UniDeskTabBar.md' },
+                                { text: 'UniDeskTabButton', link: '/en/controls-reference/UniDeskTabButton.md' },
+                            ]
+                        },
+                        {
+                            text: 'Menu System',
+                            items: [
+                                { text: 'UniDeskMenu', link: '/en/controls-reference/UniDeskMenu.md' },
+                                { text: 'UniDeskMenuItem', link: '/en/controls-reference/UniDeskMenuItem.md' },
+                                { text: 'UniDeskMenuSeparator', link: '/en/controls-reference/UniDeskMenuSeparator.md' },
+                            ]
+                        },
+                        {
+                            text: 'Position & Size',
+                            items: [
+                                { text: 'UniDeskPosSelector', link: '/en/controls-reference/UniDeskPosSelector.md' },
+                                { text: 'UniDeskSizeSelector', link: '/en/controls-reference/UniDeskSizeSelector.md' },
+                            ]
+                        },
+                        {
+                            text: 'Component Editor',
+                            items: [
+                                { text: 'UniDeskComBase', link: '/en/controls-reference/UniDeskComBase.md' },
+                                { text: 'UniDeskComBox', link: '/en/controls-reference/UniDeskComBox.md' },
+                                { text: 'UniDeskComBasicOptions', link: '/en/controls-reference/UniDeskComBasicOptions.md' },
+                                { text: 'UniDeskComRectEditor', link: '/en/controls-reference/UniDeskComRectEditor.md' },
+                            ]
+                        },
+                        {
+                            text: 'Base Object',
+                            items: [
+                                { text: 'UniDeskObject', link: '/en/controls-reference/UniDeskObject.md' },
+                            ]
+                        }
+                    ]
+                },
+                socialLinks: [
+                    { icon: 'github', link: 'https://github.com/Uniquenium/Uniquenium' }
+                ],
+                outline:{
+                    level: [2, 4],
+                    label: "On This Page"
+                },
+                footer: {
+                    message: 'Released under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" style="color: var(--vp-c-brand-1)">CC BY-SA 4.0</a> open documentation license.',
+                    copyright: 'Copyright © 2025-present Uniquenium Development Team · Crafted with care'
+                }
+            }
         },
         root: { 
             label: '简体中文',

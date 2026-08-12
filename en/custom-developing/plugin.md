@@ -1,36 +1,36 @@
 ---
-title: 插件开发指南
+title: Plugin Development Guide
 layout: doc
 editLink: true
 ---
 
-# 插件开发指南
+# Plugin Development Guide
 
-Uniquenium 提供了基于 Qt C++ 插件机制 + QML 动态加载的插件系统。插件可以扩展新的组件类型，提供自定义的 C++ 后端逻辑，或添加全新的功能。
+Uniquenium provides a plugin system based on the Qt C++ plugin mechanism + QML dynamic loading. Plugins can extend new component types, provide custom C++ backend logic, or add brand-new features.
 
-## 插件系统架构
+## Plugin System Architecture
 
-Uniquenium 的插件由两部分组成：
+A Uniquenium plugin consists of two parts:
 
-| 组成部分 | 说明 |
-|---------|------|
-| **C++ DLL** | 实现 `UniDeskPluginInterface` 接口，注册 QML 类型，提供后端逻辑 |
-| **QML 文件** | 定义组件的 UI 外观和选项面板 |
+| Component | Description |
+|-----------|-------------|
+| **C++ DLL** | Implements the `UniDeskPluginInterface`, registers QML types, provides backend logic |
+| **QML Files** | Defines the UI appearance of components and their option panels |
 
-插件加载流程：
-1. `UniDeskPluginMgr` 扫描 `data/plugins/` 下的子目录
-2. 读取每个子目录下的 `plugin-info.json` 元数据
-3. 加载 `dlls` 字段指定的 DLL 文件
-4. 检查 DLL 是否实现 `UniDeskPluginInterface` 接口
-5. 调用 `registerQmlTypes()` 注册 QML 类型
-6. 调用 `initialize()` 初始化插件
-7. 将插件目录添加到 QML 导入路径
+Plugin Loading Flow:
+1. `UniDeskPluginMgr` scans subdirectories under `data/plugins/`
+2. Reads the `plugin-info.json` metadata from each subdirectory
+3. Loads the DLL files specified in the `dlls` field
+4. Checks whether the DLL implements the `UniDeskPluginInterface`
+5. Calls `registerQmlTypes()` to register QML types
+6. Calls `initialize()` to initialize the plugin
+7. Adds the plugin directory to the QML import path
 
 ---
 
-## 插件接口
+## Plugin Interface
 
-所有插件必须实现 `UniDeskPluginInterface` 接口：
+All plugins must implement the `UniDeskPluginInterface`:
 
 ```cpp
 // UniDeskPluginInterface.h
@@ -48,17 +48,17 @@ Q_DECLARE_INTERFACE(UniDeskPluginInterface, UniDeskPluginInterface_iid)
 
 ---
 
-## 插件目录结构
+## Plugin Directory Structure
 
-每个插件是 `data/plugins/` 下的一个子目录，例如：
+Each plugin is a subdirectory under `data/plugins/`, for example:
 
 ```
 data/plugins/
-├── p1/                          # 插件目录（任意名称）
-│   ├── plugin-info.json         # 插件元数据（必需）
-│   ├── MyPlugin.dll             # C++ 插件 DLL
-│   ├── MyComponent.qml          # 组件 QML 文件
-│   └── MyComponentOptions.qml   # 组件选项面板 QML
+├── p1/                          # Plugin directory (any name)
+│   ├── plugin-info.json         # Plugin metadata (required)
+│   ├── MyPlugin.dll             # C++ plugin DLL
+│   ├── MyComponent.qml          # Component QML file
+│   └── MyComponentOptions.qml   # Component options panel QML
 ├── p2/
 │   └── ...
 └── p3/
@@ -71,49 +71,49 @@ data/plugins/
 
 ---
 
-## 插件元数据 (`plugin-info.json`)
+## Plugin Metadata (`plugin-info.json`)
 
-`plugin-info.json` 是插件的核心配置文件，告诉 Uniquenium 插件的基本信息。
+`plugin-info.json` is the core configuration file that tells Uniquenium the basic information about the plugin.
 
-### 字段说明
+### Field Descriptions
 
-| 字段 | 必填 | 类型 | 说明 |
-|------|------|------|------|
-| `id` | 是 | string | 插件唯一 ID |
-| `name` | 是 | string | 插件显示名称 |
-| `version` | 是 | string | 语义化版本号 |
-| `author` | 是 | string | 作者名字或团队 |
-| `description` | 是 | string | 插件描述 |
-| `components` | 是 | array | 插件提供的组件列表 |
-| `dlls` | 是 | array | 插件依赖的 DLL 文件列表 |
+| Field | Required | Type | Description |
+|-------|----------|------|-------------|
+| `id` | Yes | string | Unique plugin ID |
+| `name` | Yes | string | Plugin display name |
+| `version` | Yes | string | Semantic version number |
+| `author` | Yes | string | Author name or team |
+| `description` | Yes | string | Plugin description |
+| `components` | Yes | array | List of components provided by the plugin |
+| `dlls` | Yes | array | List of DLL files the plugin depends on |
 
-### `components[]` 字段
+### `components[]` Fields
 
-每个组件对象包含：
+Each component object contains:
 
-| 字段 | 说明 |
-|------|------|
-| `name` | 组件类型标识（如 `"typing-follower"`） |
-| `nameTr` | 组件显示名称（如 `"输入跟随器"`） |
-| `path` | QML 组件文件的相对路径（如 `"TypingFollower/TypingFollower.qml"`） |
+| Field | Description |
+|-------|-------------|
+| `name` | Component type identifier (e.g., `"typing-follower"`) |
+| `nameTr` | Component display name (e.g., `"Typing Follower"`) |
+| `path` | Relative path to the QML component file (e.g., `"TypingFollower/TypingFollower.qml"`) |
 
-### `dlls[]` 字段
+### `dlls[]` Fields
 
-需要加载的 DLL 文件名数组，DLL 文件必须位于插件目录内。
+An array of DLL file names to load. DLL files must be located in the plugin directory.
 
-### 完整示例
+### Full Example
 
 ```json
 {
     "id": "my-plugin",
-    "name": "我的插件",
+    "name": "My Plugin",
     "version": "1.0.0",
     "author": "YourName",
-    "description": "一个示例插件",
+    "description": "A sample plugin",
     "components": [
         {
             "name": "my-component",
-            "nameTr": "我的组件",
+            "nameTr": "My Component",
             "path": "MyComponent.qml"
         }
     ],
@@ -125,23 +125,23 @@ data/plugins/
 
 ---
 
-## 快速开始：从零创建一个插件
+## Quick Start: Creating a Plugin from Scratch
 
-### 步骤 1：创建 C++ 插件项目
+### Step 1: Create a C++ Plugin Project
 
-创建一个新的 Qt C++ 项目，将 `UniDeskPluginInterface.h` 复制到项目中。
+Create a new Qt C++ project and copy `UniDeskPluginInterface.h` into the project.
 
-#### 项目文件结构
+#### Project File Structure
 
 ```
 MyPlugin/
 ├── CMakeLists.txt
 ├── Plugin.h
 ├── Plugin.cpp
-├── MyBackend.h          # 可选：C++ 后端类
+├── MyBackend.h          # Optional: C++ backend class
 ├── MyBackend.cpp
-├── MyComponent.qml      # 组件 QML
-├── MyComponentOptions.qml # 组件选项面板 QML
+├── MyComponent.qml      # Component QML
+├── MyComponentOptions.qml # Component options panel QML
 └── plugin-info.json
 ```
 
@@ -280,7 +280,7 @@ void Plugin::initialize()
 }
 ```
 
-#### C++ 后端类 `MyBackend.h`
+#### C++ Backend Class `MyBackend.h`
 
 ```cpp
 #ifndef MYBACKEND_H
@@ -316,7 +316,7 @@ private:
 #endif // MYBACKEND_H
 ```
 
-#### C++ 后端类 `MyBackend.cpp`
+#### C++ Backend Class `MyBackend.cpp`
 
 ```cpp
 #include "MyBackend.h"
@@ -351,9 +351,9 @@ void MyBackend::incrementCounter()
 }
 ```
 
-### 步骤 2：编写组件 QML 文件
+### Step 2: Write the Component QML File
 
-组件必须继承自 `UniDeskComBase`，并通过 `optionsWindow` 属性关联选项面板。
+The component must inherit from `UniDeskComBase` and link to the options panel via the `optionsWindow` property.
 
 ```qml
 import QtQuick
@@ -415,9 +415,9 @@ UniDeskComBase {
 }
 ```
 
-### 步骤 3：编写组件选项面板 QML
+### Step 3: Write the Component Options Panel QML
 
-选项面板必须继承自 `UniDeskWindow`，提供属性编辑界面。
+The options panel must inherit from `UniDeskWindow` and provides a property editing interface.
 
 ```qml
 import QtQuick
@@ -460,19 +460,19 @@ UniDeskWindow {
 }
 ```
 
-### 步骤 4：编写 `plugin-info.json`
+### Step 4: Write `plugin-info.json`
 
 ```json
 {
     "id": "my-plugin",
-    "name": "我的插件",
+    "name": "My Plugin",
     "version": "1.0.0",
     "author": "YourName",
-    "description": "一个示例插件",
+    "description": "A sample plugin",
     "components": [
         {
             "name": "my-component",
-            "nameTr": "我的组件",
+            "nameTr": "My Component",
             "path": "MyComponent.qml"
         }
     ],
@@ -482,17 +482,17 @@ UniDeskWindow {
 }
 ```
 
-### 步骤 5：编译并安装
+### Step 5: Build and Install
 
-1. 使用 Qt Creator 打开项目并编译
-2. 将编译产物（DLL、QML 文件、`plugin-info.json`）复制到 `data/plugins/<你的插件目录>/`
-3. 重启 Uniquenium，插件会自动加载
+1. Open the project with Qt Creator and build
+2. Copy the build artifacts (DLL, QML files, `plugin-info.json`) to `data/plugins/<your-plugin-directory>/`
+3. Restart Uniquenium. The plugin will be loaded automatically.
 
 ---
 
-## 组件数据扩展
+## Extending Component Data
 
-组件可以通过实现 `propertyDataEx()` 和 `loadPropertyDataEx()` 方法来保存和加载自定义属性：
+Components can save and load custom properties by implementing the `propertyDataEx()` and `loadPropertyDataEx()` methods:
 
 ```qml
 UniDeskComBase {
@@ -516,28 +516,28 @@ UniDeskComBase {
 
 ---
 
-## 调试与日志
+## Debugging and Logging
 
-### 输出日志
+### Outputting Logs
 
 ```qml
-console.log("[我的插件] 组件加载完成")
-console.warn("[我的插件] 警告信息")
-console.error("[我的插件] 错误信息")
+console.log("[MyPlugin] Component loaded")
+console.warn("[MyPlugin] Warning message")
+console.error("[MyPlugin] Error message")
 ```
 
-### 日志位置
+### Log Location
 
-- 应用的日志窗口
+- The application's log window
 
 ---
 
-## 最佳实践
+## Best Practices
 
-1. 为你的 C++ 后端类使用有意义的命名，如 `TypingFollowerBackend`
-2. 组件 QML 文件必须继承 `UniDeskComBase`，如果没有继承需自行完成UniDeskComBase中成员的实现
-3. 选项面板必须继承 `UniDeskWindow`，如果没有继承会显示系统默认的有边框窗口
-4. 始终通过 `comManager` 属性与组件管理器交互
-5. 使用 `chosen` 属性正确处理选中状态的视觉表现
-6. 通过 `propertyDataEx()` / `loadPropertyDataEx()` 扩展组件数据保存
-7. QML 文件的 URI 命名空间遵循 `<a>.<b>.<c>` 格式,但是qml组件中的导入需保持一致
+1. Use meaningful names for your C++ backend classes, e.g., `TypingFollowerBackend`
+2. Component QML files must inherit from `UniDeskComBase`; if they don't inherit, you need to manually implement the members from `UniDeskComBase`
+3. Options panels must inherit from `UniDeskWindow`; if they don't inherit, the system default bordered window will be displayed
+4. Always interact with the component manager through the `comManager` property
+5. Use the `chosen` property to correctly handle the visual appearance of the selected state
+6. Extend component data persistence through `propertyDataEx()` / `loadPropertyDataEx()`
+7. The URI namespace of QML files follows the `<a>.<b>.<c>` format, but the imports in QML components must remain consistent

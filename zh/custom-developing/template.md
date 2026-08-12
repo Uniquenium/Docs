@@ -6,241 +6,426 @@ editLink: true
 
 # 模板系统
 
-Uniquenium 的模板系统允许你将精心设计的组件组布局保存为模板，方便备份、分享，或快速复用在其他场景中。无论是个人使用还是社区分享，模板都能大幅提升效率。
-
-::: tip 术语提示
-在阅读本页面前，建议先了解 [术语表](/glossary.md) 中 **模板（Template）** 的定义。
-:::
+Uniquenium 的模板系统允许你将当前的组件布局保存为模板，方便快速复用或分享给他人。
 
 ## 什么是模板？
 
-**模板（Template）** 是一组预先配置好的**组件集合**，保存了组件的布局、属性和关联关系。用户可以通过模板快速复用一整套桌面布局，也可以将当前桌面导出为模板分享给他人。
+**模板（Template）** 是一组组件数据的快照，保存了组件的位置、尺寸、属性值等信息。
 
-模板是一个组件组配置的**快照**，包含：
-- 组件组的基本设置（名称、样式、尺寸、背景色）
-- 组内所有组件的位置、尺寸、属性值
-- 组件之间的层级关系（Z 轴顺序）
-- 组件的事件绑定和信号连接（部分）
-- 预设的组件参数（用户可在导入时调整）
+模板包含：
+- 组件的基本数据（类型、位置、尺寸、层级、透明度等）
+- 组件的扩展属性（通过 `propertyDataEx()` 保存的自定义属性）
+- 引用的媒体文件（如图片）
 
 模板**不包含**：
-- 本地图片、字体等外部资源文件（需要单独复制）
-- 安装的插件（如果模板使用了某插件提供的组件，导入方需要自行安装对应插件）
+- 预设（Preset）逻辑——预设窗口需要用户自行创建
+- 组件组的元数据（如组名称、样式等）
+- 外部资源文件（模板会自动复制媒体文件到模板目录中）
 
 ::: warning 拼写说明
-早期版本中「模板」曾被误拼为 "templete"，正确拼写为 **Template**。如果你在旧文档或代码中看到 `templete`，请理解为 `template`。
+源码中使用的拼写是 "Templete"（而非 "Template"），对应目录为 `templetes/`，类名为 `UniDeskTempleteMgr`。
 :::
 
 ---
 
-## 导出模板
+## 模板目录结构
 
-### 方式一：从组件组导出
+模板存储在 `data/templetes/` 目录下，每个模板是一个子目录：
 
-1. 打开主面板 → 左侧导航栏找到目标组件组
-2. **右键组件组** → 选择「导出为模板」
-3. 在弹出的对话框中填写：
-   - **模板名称**：模板的显示名（如：「简洁工作面板 v2」）
-   - **作者**：你的名字（分享时显示）
-   - **版本**：模板版本号，如 `1.0.0`
-   - **描述**：简要介绍这个模板的设计思路和适用场景
-   - **预览图**：点击「截取当前画面」自动生成缩略图（推荐）
-4. 选择保存位置（默认：`%APPDATA%\Uniquenium\Templates\`）
-5. 点击「确定」，生成 `.uniq-template` 文件
-
-### 方式二：从模板管理器导出
-
-1. 打开 **设置** → **模板** 选项卡
-2. 在「我的模板」列表中找到要导出的模板
-3. 点击「分享/导出」按钮
-4. 选择保存位置，即可导出为可分享的文件
+```
+data/templetes/
+├── 111/
+│   └── data.json
+├── 222/
+│   ├── data.json
+│   ├── media/
+│   │   └── 111.png
+│   └── PresetWindow.qml    # 可选：预设窗口
+└── MyTemplate/
+    └── data.json
+```
 
 ---
 
-## 导入模板
+## 模板文件格式
 
-### 方式一：新建组件组时从模板创建
+### `data.json` 结构
 
-1. 点击左侧导航栏「+ 新建组件组」
-2. 在对话框中切换到「**从模板导入**」选项卡
-3. 可以：
-   - 选择「本地模板」列表中已有的模板
-   - 或点击「导入外部模板文件」选择 `.uniq-template` 文件
-4. 填写新组件组的名称
-5. 点击「创建」，组件组会以模板为蓝本生成
-
-### 方式二：导入到模板库
-
-1. 打开 **设置** → **模板** → 点击「**导入模板**」
-2. 选择下载的 `.uniq-template` 文件
-3. 模板会出现在「本地模板」列表中，后续新建组件组时可直接选用
-
-### 社区模板下载
-
-可以在以下渠道获取用户分享的模板：
-- [GitHub Discussions - Templates 分类](https://github.com/Uniquenium/Uniquenium/discussions/categories/templates)
-- [Uniquenium 官网模板库](/)（即将上线）
-
----
-
-## 模板文件格式（开发者用）
-
-`.uniq-template` 文件本质上是一个 **ZIP 压缩包**，改后缀为 `.zip` 即可用解压软件打开。
-
-内部结构：
-
-```
-MyTemplate.uniq-template
-├── template.json        # 模板元数据 + 组件组配置（核心）
-└── preview.png          # 预览缩略图（可选，推荐 600x400 PNG）
-```
-
-### `template.json` 结构
+`data.json` 是模板的核心数据文件，包含以下字段：
 
 ```json
 {
-    "version": "1.0",
-    "templateFormat": 2,
-    "meta": {
-        "name": "简洁工作面板 v2",
-        "author": "YourName",
-        "version": "1.0.0",
-        "description": "左侧待办 + 右侧时钟，适合办公族。",
-        "createdAt": "2025-01-15T10:30:00Z",
-        "minAppVersion": "1.2.0",
-        "requiredPlugins": [
-            {"name": "TodoPlugin", "version": ">=1.0.0"}
-        ]
-    },
-    "groupData": {
-        "groupName": "我的工作面板",
-        "groupStyle": "normal",
-        "width": 600,
-        "height": 900,
-        "background": "#F5F5F5",
-        "components": [
-            {
-                "type": "UniDeskText",
-                "id": "title_001",
-                "x": 20, "y": 20,
-                "width": 560, "height": 40,
-                "properties": {
-                    "text": "今日待办",
-                    "font.pointSize": 20,
-                    "font.bold": true
-                }
-            },
-            {
-                "type": "UniDeskFrame",
-                "id": "frame_001",
-                "x": 20, "y": 80,
-                "width": 560, "height": 300,
-                "properties": {
-                    "radius": 8
-                },
-                "children": [
-                    // 嵌套组件...
-                ]
-            }
-        ]
-    }
+    "name": "模板名称",
+    "components": [
+        {
+            "type": "UDCText",
+            "identification": "{3ac9dab4-54bb-4e45-a07b-61a8c7a3b35e}",
+            "name": "文字 1",
+            "parent": "Desktop",
+            "pageid": "{948bc674-23c0-426d-9a76-0286d6d178c4}",
+            "x": 895,
+            "y": 674,
+            "width": 100,
+            "height": 50,
+            "z": 1,
+            "rotation": 0,
+            "opacity": 1,
+            "bold": false,
+            "fontFamily": "微软雅黑",
+            "fontSize": 30,
+            "textContent": "Hello World",
+            "horizontalAlignment": 4,
+            "verticalAlignment": 128
+        },
+        {
+            "type": "UDCImage",
+            "identification": "{6e23755f-ebe1-4ec2-ad61-fd73e964c6e0}",
+            "name": "图片/按钮 1",
+            "parent": "Desktop",
+            "pageid": "{948bc674-23c0-426d-9a76-0286d6d178c4}",
+            "x": 890,
+            "y": 567,
+            "width": 282,
+            "height": 212,
+            "z": 0,
+            "rotation": 0,
+            "opacity": 1,
+            "imagePath": "media/111_3.png",
+            "isButton": false,
+            "buttonActionType": 0,
+            "buttonActionTarget": "",
+            "radius": 0,
+            "fillMode": 0,
+            "smooth": true,
+            "mipmap": false
+        }
+    ],
+    "presetWindow": "PresetWindow.qml"
 }
 ```
 
 ### 字段说明
 
-| 字段 | 说明 |
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `name` | string | 模板名称 |
+| `components` | array | 组件数据数组，每个组件包含类型、位置、属性等信息 |
+| `presetWindow` | string | 可选，预设窗口 QML 文件的相对路径 |
+
+### 组件通用属性
+
+每个组件对象包含以下基础属性：
+
+| 属性 | 说明 |
 |------|------|
-| `version` | 文件版本号（用于兼容性判断） |
-| `templateFormat` | 模板格式版本（当前为 2） |
-| `meta` | 模板元数据（展示信息） |
-| `groupData.groupStyle` | 组件组样式：`normal` / `fullscreen` / `frameless` |
-| `groupData.components[]` | 组件树数组，支持嵌套 |
-| `requiredPlugins[]` | 依赖的插件，导入时会检查是否已安装 |
+| `type` | 组件类型（如 `UDCText`、`UDCImage`、`Uniquenium.PluginExample`） |
+| `identification` | 组件唯一标识符（UUID 格式） |
+| `name` | 组件显示名称 |
+| `parent` | 父组件标识（`Desktop`、`Wallpaper`、`TopMost` 或其他组件的 `identification`） |
+| `pageid` | 所属页面 ID |
+| `x`, `y` | 组件位置坐标 |
+| `width`, `height` | 组件尺寸 |
+| `z` | Z 轴层级 |
+| `rotation` | 旋转角度（0-359） |
+| `opacity` | 透明度（0-1） |
+| 其他 | 组件特有的扩展属性（通过 `propertyDataEx()` 保存） |
+
+### 媒体文件
+
+当组件引用外部媒体文件（如图片）时，模板系统会自动将文件复制到模板目录的 `media/` 子目录，并将路径改为相对路径（如 `media/111_3.png`）。
 
 ---
 
-## 模板设计最佳实践
+## 导出模板
 
-### 🎨 设计建议
+### 程序导出行为
 
-1. **响应式布局优先**
-   - 使用锚点（anchors）而非固定坐标，适应不同分辨率
-   - 重要元素不要贴边放置，至少留出 20px 边距
+程序只会导出组件的**数据**部分：
 
-2. **主题适配**
-   - 颜色使用 `UniDeskGlobals.isLight` 动态判断
-   - 避免硬编码纯黑/纯白，使用主题色 `UniDeskSettings.primaryColor`
+1. 选中一个或多个组件
+2. 触发保存模板操作
+3. 程序将组件的 JSON 数组写入 `data.json`
+4. 自动复制组件引用的媒体文件到模板的 `media/` 目录
 
-3. **尺寸合理**
-   - 通用模板建议宽度 600~1000px，高度 400~800px
-   - 侧边栏模板建议宽度 300~400px，高度铺满屏幕
+::: warning 注意
+程序不会导出任何预设（Preset）相关的内容。预设窗口 `PresetWindow.qml` 需要用户自行创建。
+:::
 
-4. **组件命名**
-   - 为关键组件设置有意义的 `id`，方便他人二次修改
-   - 例如：`todoList_frame`、`clock_title`、`weather_card`
+### 导出的 `data.json` 示例
 
-### 📝 发布前检查清单
+```json
+{
+    "name": "我的模板",
+    "components": [
+        {
+            "type": "UDCText",
+            "identification": "{...}",
+            "name": "标题文字",
+            "parent": "Desktop",
+            "pageid": "{...}",
+            "x": 100,
+            "y": 50,
+            "width": 200,
+            "height": 40,
+            "z": 0,
+            "rotation": 0,
+            "opacity": 1,
+            "textContent": "Hello",
+            "fontSize": 24
+        }
+    ]
+}
+```
 
-- [ ] 预览图是否清晰且真实反映模板效果
-- [ ] 描述是否写明了：适用场景、分辨率建议、依赖插件
-- [ ] 模板中没有残留个人隐私信息（如账号、路径）
-- [ ] 在无插件的新环境中测试能正常导入
-- [ ] 如果使用了第三方插件，在描述中注明并提供下载地址
+---
+
+## 导入模板
+
+### 加载流程
+
+1. 选择模板目录
+2. 如果模板包含 `presetWindow` 字段，会先加载预设窗口收集用户输入
+3. 从 `data.json` 读取组件数据
+4. 将 `media/` 目录中的媒体文件复制到应用的 `data/media/` 目录（自动处理重命名冲突）
+5. 为每个组件重新分配 UUID（避免与现有组件冲突）
+6. 应用预设值替换（将 `%{key}` 替换为用户输入的值）
+7. 加载组件到画布
+
+---
+
+## 预设系统
+
+### 什么是预设？
+
+预设是一种模板参数化机制，允许模板中包含可替换的变量。当用户加载模板时，会弹出预设窗口让用户填写参数值，这些值会替换模板中对应的变量。
+
+### 在模板中使用预设
+
+在组件的字符串属性中使用 `%{变量名}` 语法来标记预设变量：
+
+```json
+{
+    "type": "UDCText",
+    "textContent": "%{greeting}",
+    "fontSize": 24
+}
+```
+
+当用户提供 `{"greeting": "你好世界"}` 作为预设时，`textContent` 的值将被替换为 `"你好世界"`。
+
+### 创建预设窗口
+
+预设窗口是一个 QML 文件，需要用户**自行创建**。它必须是一个 `UniDeskDialog`，负责收集用户输入并调用 `UniDeskTempleteMgr.loadTemplete()`。
+
+#### `PresetWindow.qml` 示例
+
+```qml
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import UniDesk
+import UniDesk.Controls
+import UniDesk.Singletons
+
+UniDeskDialog {
+    id: presetWindow
+    title: qsTr("模板预设")
+    autoVisible: false
+    autoDestroy: false
+    width: 400
+    height: 180
+
+    property string templeteDir: ""
+    property var comManager: null
+    property string variableName: "value"
+
+    UniDeskText {
+        id: label
+        text: qsTr("请输入") + " " + presetWindow.variableName + ":"
+        font: UniDeskTextStyle.little
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.topMargin: 20
+        anchors.leftMargin: 20
+    }
+
+    UniDeskTextField {
+        id: valueInput
+        anchors.top: label.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.topMargin: 8
+        anchors.leftMargin: 20
+        anchors.rightMargin: 20
+        placeholderText: presetWindow.variableName
+        focus: true
+        Keys.onReturnPressed: confirmBtn.clicked()
+        Keys.onEscapePressed: presetWindow.close()
+    }
+
+    RowLayout {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 10
+
+        UniDeskButton {
+            id: confirmBtn
+            display: Button.TextOnly
+            contentText: qsTr("确定")
+            borderWidth: 1
+            radius: 5
+            onClicked: {
+                var v = valueInput.text;
+                var presets = ({});
+                presets[presetWindow.variableName] = v;
+                UniDeskTempleteMgr.loadTemplete(presetWindow.templeteDir, presets);
+                presetWindow.close();
+            }
+        }
+
+        UniDeskButton {
+            display: Button.TextOnly
+            contentText: qsTr("取消")
+            borderWidth: 1
+            radius: 5
+            onClicked: presetWindow.close()
+        }
+    }
+}
+```
+
+### 在 `data.json` 中关联预设窗口
+
+在 `data.json` 中添加 `presetWindow` 字段即可关联预设窗口：
+
+```json
+{
+    "name": "带预设的模板",
+    "components": [
+        {
+            "type": "UDCText",
+            "textContent": "%{value}",
+            "fontSize": 30
+        }
+    ],
+    "presetWindow": "PresetWindow.qml"
+}
+```
+
+::: tip
+如果模板不需要预设功能，可以不创建 `PresetWindow.qml`，也不需要在 `data.json` 中添加 `presetWindow` 字段。
+:::
+
+---
+
+## 完整模板示例
+
+### 无预设的简单模板
+
+目录结构：
+```
+MySimpleTemplate/
+└── data.json
+```
+
+`data.json`：
+```json
+{
+    "name": "简单模板",
+    "components": [
+        {
+            "type": "UDCText",
+            "identification": "{27a30ce1-46ef-4d2e-8e2f-abb4511763b7}",
+            "name": "欢迎文字",
+            "parent": "Desktop",
+            "pageid": "{...}",
+            "x": 100,
+            "y": 100,
+            "width": 300,
+            "height": 50,
+            "z": 0,
+            "rotation": 0,
+            "opacity": 1,
+            "textContent": "欢迎使用 Uniquenium",
+            "fontSize": 24,
+            "bold": true
+        }
+    ]
+}
+```
+
+### 带预设的模板
+
+目录结构：
+```
+MyPresetTemplate/
+├── data.json
+├── media/
+│   └── background.png
+└── PresetWindow.qml
+```
+
+`data.json`：
+```json
+{
+    "name": "带预设的模板",
+    "components": [
+        {
+            "type": "UDCText",
+            "identification": "{...}",
+            "name": "标题",
+            "parent": "Desktop",
+            "pageid": "{...}",
+            "x": 100,
+            "y": 50,
+            "width": 400,
+            "height": 60,
+            "z": 0,
+            "rotation": 0,
+            "opacity": 1,
+            "textContent": "%{title}",
+            "fontSize": 30,
+            "bold": true
+        },
+        {
+            "type": "UDCImage",
+            "identification": "{...}",
+            "name": "背景图",
+            "parent": "Desktop",
+            "pageid": "{...}",
+            "x": 50,
+            "y": 120,
+            "width": 800,
+            "height": 400,
+            "z": -1,
+            "rotation": 0,
+            "opacity": 1,
+            "imagePath": "media/background.png",
+            "fillMode": 0
+        }
+    ],
+    "presetWindow": "PresetWindow.qml"
+}
+```
 
 ---
 
 ## 故障排查
 
-### Q: 导入模板后部分组件显示「未知组件类型」
+### Q: 导入模板后组件无法识别
 
-**A:** 说明模板使用了第三方插件提供的组件，而你尚未安装该插件。
-- 查看模板描述中的「依赖插件」部分
-- 安装对应插件后重启 Uniquenium
-- 重新导入模板即可
+**A:** 说明模板使用了插件提供的组件类型，而你尚未安装对应插件。检查组件的 `type` 字段（如 `Uniquenium.PluginExample`），安装提供该组件的插件后重试。
 
-### Q: 导入后组件位置偏移或超出屏幕
+### Q: 导入后图片显示为空白
 
-**A:** 这是因为模板设计时的分辨率与你当前的屏幕分辨率不一致。
-- 解决：切换到编辑模式 → 全选组件 → 等比缩放并重新对齐
-- 建议：模板描述中注明适配的分辨率（如 1920×1080）
+**A:** 可能是媒体文件路径问题：
+- 确认模板的 `media/` 目录包含所需图片
+- 确认 `data.json` 中 `imagePath` 使用相对路径（如 `media/xxx.png`）
 
-### Q: 图片组件显示为空白
+### Q: 预设窗口没有弹出
 
-**A:** 模板不会打包外部图片资源。解决：
-- 找到原模板作者使用的图片文件
-- 手动复制到对应路径，或在属性面板中重新选择图片位置
-
-### Q: 导出的模板文件非常大
-
-**A:** 可能是预览图使用了过大分辨率：
-- 使用系统自带的「截图工具」重新截取 600x400 左右的 PNG
-- 或在导出时跳过「预览图」选项
-
----
-
-## 模板版本迁移
-
-Uniquenium 会自动处理旧版本模板的兼容升级：
-- 模板格式 v1 → v2：自动转换组件属性命名
-- 旧版控件名会自动映射为新名称（如不兼容会在日志中提示）
-
-如果模板过旧无法自动迁移，建议在对应版本的 Uniquenium 中打开后重新导出。
-
----
-
-## 分享你的模板
-
-欢迎将你的优秀设计分享给社区！推荐方式：
-
-1. **GitHub Discussions**：在 [Templates 分类](https://github.com/Uniquenium/Uniquenium/discussions/categories/templates) 发帖，附上：
-   - 模板截图
-   - 简短介绍
-   - `.uniq-template` 下载链接（附件或网盘）
-
-2. **模板库收录**：提交 PR 到 [Uniquenium/Awesome-Templates](https://github.com/Uniquenium/Awesome-Templates) 仓库，可被官方模板库收录展示。
-
-更多开发相关：
-- [🔌 插件开发指南](/custom-developing/plugin.md)
-- [📚 UniDesk 控件库参考](/controls-reference/overview.md)
-- [📖 术语表](/glossary.md)
+**A:** 检查：
+- `data.json` 中是否包含 `presetWindow` 字段
+- `presetWindow` 指向的 QML 文件是否存在
+- QML 文件中是否正确调用了 `UniDeskTempleteMgr.loadTemplete()`

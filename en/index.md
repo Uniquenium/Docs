@@ -3,20 +3,240 @@
 layout: home
 
 hero:
-  name: "Uniquenium Docs Center"
-  text: "Docs for Developing, Using and Contributing"
-  tagline: My great project tagline
+  name: "Uniquenium"
+  text: "Create Infinite Possibilities"
+  tagline: An open-source desktop customization tool that blends beauty and utility
+  image:
+    light: /uq-l.png
+    dark: /uq-d.png
+    alt: Uniquenium Logo
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Download Now
+      link: /en/download.md
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Quick Start
+      link: /en/quick-start/install.md
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Uniquenium/Uniquenium
 
 features:
-  - title: 控件库参考
-  - title: 组件库百科
-  - title: 历史
+  - title: Beautiful Interface
+    icon: 🎨
+    details: Modern Fluent design style with dark/light theme switching and Acrylic blur effects
+    link: /en/components-wiki/overview.md#theme-switching
+    linkText: Learn about themes
+
+  - title: Rich Controls
+    icon: 🧩
+    details: Built-in UniDesk control library with 30+ elegant QML controls for building desktop interfaces
+    link: /en/controls-reference/overview.md
+    linkText: View control library
+
+  - title: Plugin System
+    icon: 🔌
+    details: Flexible plugin architecture supporting custom components and features for a personalized desktop experience
+    link: /en/custom-developing/plugin.md
+    linkText: Develop plugins
+
+  - title: Shortcut Support
+    icon: ⚡
+    details: Global hotkey binding for quick app launching, page switching, and operation execution
+    link: /en/components-wiki/overview.md#keyboard-shortcuts
+    linkText: Set shortcuts
+
+  - title: Visual Editing
+    icon: 📐
+    details: WYSIWYG component editor with drag-and-drop layout for easy position and property adjustment
+    link: /en/components-wiki/overview.md#component-properties
+    linkText: Start editing
+
+  - title: Template System
+    icon: 🎯
+    details: Export and import component templates to quickly reuse excellent layout designs
+    link: /en/custom-developing/template.md
+    linkText: Use templates
+
+  - title: Frameless Windows
+    icon: 🪟
+    details: Custom frameless window technology with blur effects and custom title bars
+    link: /en/controls-reference/UniDeskWindow.md
+    linkText: Window controls
+
+  - title: Cross-Platform
+    icon: 🌐
+    details: Built on the Qt framework, supporting Windows (Linux support in development)
+    link: /en/download.md
+    linkText: View system requirements
 ---
 
+## What is Uniquenium?
+
+**Uniquenium** is an open-source desktop customization tool dedicated to providing users with a desktop extension platform that blends beauty and utility. It is built on the **C++/Qt** and **QML** technology stack, with its own UI control library **UniDesk** to make your desktop look brand new.
+
+### Architecture Overview
+
+<div align="center">
+
+```mermaid
+sequenceDiagram
+    participant User as User
+    box #e1f5fe Extension Layer
+        participant Ext as Plugins/Templates/Themes
+    end
+    box #f3e5f5 Presentation Layer
+        participant Pres as Pages/Components/Windows
+    end
+    box #e8f5e9 Control Library
+        participant Lib as Controls/Singletons
+    end
+    box #fff3e0 Logic Layer
+        participant Log as Business/Persistence/Expressions
+    end
+    box #fce4ec Integration Layer
+        participant Int as Platform/Hotkeys/Tray/Wallpaper/Cursor
+    end
+    box #eceff1 Dependencies
+        participant Dep as Qt/QHotkey/exprtk
+    end
+
+    Note over User,Dep: Application Startup Flow
+
+    User->>+Int: Launch Uniquenium
+    Int->>Dep: Create QApplication (Qt)
+    Dep->>Pres: Load QML Engine
+    Pres->>Int: Create Frameless Transparent Window
+    Pres->>Lib: Initialize Global Singletons
+    Lib->>Log: Read settings components.json
+    Log-->>Lib: Return settings data
+    Lib->>Ext: Load ThemeManager
+    Ext->>Pres: Apply theme styles
+    Ext->>Int: Load custom cursors
+    Int->>Int: Set system cursors
+    Lib->>Int: Initialize system tray
+    Lib->>Int: Register global hotkeys
+    Int->>Dep: Bind shortcuts (QHotkey)
+    Dep->>Ext: Load plugin DLLs
+    Ext->>Log: Inject custom components
+    Lib->>Pres: Load page list
+    Pres->>Log: Read page layout
+    Log-->>Pres: Return page data
+    Pres->>Lib: Load components
+    Lib->>Log: Read component data
+    Log-->>Lib: Return component configs
+    Lib->>Pres: Render desktop components
+    Pres->>Lib: Render using base controls
+    Pres->>Int: Initialize wallpaper engine
+    Int->>Log: Request dynamic wallpaper
+    Log->>Dep: Execute expression evaluation (exprtk)
+    Dep-->>Log: Return wallpaper URL
+    Log-->>Int: Wallpaper address
+    Int->>Int: Set system wallpaper layer
+    Int->>Pres: Startup complete
+
+    Note over User,Dep: User Interaction Flow
+
+    User->>+Pres: Click component
+    Pres->>Log: Trigger component action
+    Log->>Lib: ComManager event dispatch
+    Lib->>Pres: Update page state
+    Pres->>Log: Save changes
+    Log->>Int: Write to JSON file
+    Int-->>Log: Write success
+    Log->>Log: Calculate dynamic properties
+    Log->>Dep: Expression evaluation (exprtk)
+    Dep-->>Log: Return result
+    Log-->>Pres: Refresh component
+    Pres->>Lib: Update control display
+    Lib-->>Pres: Render complete
+    Pres->>Pres: Interaction end
+
+    Note over User,Dep: Extension Usage Flow
+
+    User->>+Ext: Save template
+    Ext->>Log: Read current layout
+    Log-->>Ext: Return component data
+    Ext->>Int: Export JSON/ZIP
+    Int-->>Ext: Export complete
+
+    User->>+Ext: Switch theme
+    Ext->>Lib: Update theme config
+    Lib->>Log: Persist settings
+    Ext->>Pres: Apply new theme styles
+    Ext->>Int: Switch cursor
+
+    User->>+Int: Trigger hotkey
+    Int->>Dep: Hotkey trigger (QHotkey)
+    Dep-->>Int: Shortcut event
+    Int->>Lib: Execute bound action
+    Lib->>Pres: Switch page
+    Pres->>Pres: Update component display
+```
+
+</div>
+
+| Layer | Tech Stack | Core Responsibilities |
+|-------|-----------|----------------------|
+| **Extension Layer** | QML / C++ DLL | Dynamic plugin loading, template import/export, theme and cursor style switching |
+| **Presentation Layer** | QML / Qt Quick | Multi-page management, component drag-and-drop editing, frameless window rendering |
+| **Control Library** | QML + C++ (UniDesk) | 40+ self-developed controls, desktop container components, global singleton objects |
+| **Logic Layer** | C++17 / Qt6 | Data persistence, business scheduling, expression engine evaluation |
+| **Integration Layer** | Win32 API / QHotkey | Platform APIs, global hotkeys, system tray, wallpaper engine, cursor management |
+| **Dependencies** | Qt 6.5+ / QHotkey / exprtk | Cross-platform framework, hotkey library, expression evaluation library |
+
+## Core Features
+
+::: tip Tech Stack
+- **Frontend Rendering**: QML / Qt Quick
+- **Backend Logic**: C++17 / Qt6
+- **UI Library**: UniDesk (self-developed control library)
+- **Extension Support**: Plugin system + Template system
+:::
+
+### Desktop Beautification
+- Custom wallpaper layer with multi-image carousel and network wallpaper API support
+- Global cursor style customization
+- Window transparency and Acrylic blur effects
+
+### Utilities
+- Component-based desktop panels (to-do, clock, weather, calendar, etc.)
+- System tray icon and quick menu
+- Global shortcut binding
+
+### Developer Friendly
+- Complete UniDesk control library documentation
+- Plugin development guide and API reference
+- Visual component editor
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Uniquenium/Uniquenium.git
+cd Uniquenium
+git submodule update --init --recursive
+
+# Build (requires CMake 3.25+ and Qt 6.5+)
+cmake -B build -DCMAKE_PREFIX_PATH="<Your Qt6 installation path>"
+cmake --build build --config Release
+
+# Run
+./build/Uniquenium0
+```
+
+Need help? Check the [Installation Guide](/en/quick-start/install.md) or [FAQ](/en/faq.md).
+
+## Join the Community
+
+Found an issue or want to contribute? Contact us through:
+
+- 💻 [GitHub Repository](https://github.com/Uniquenium/Uniquenium) - Submit Issues and PRs
+- 📖 [DeepWiki Docs](https://deepwiki.com/Uniquenium/Uniquenium) - Interactive documentation
+- 🐛 [Issue Tracker](https://github.com/Uniquenium/Uniquenium/issues) - Report bugs
+
+---
+
+::: info 🤖 AI-Generated Statement
+The documentation on this site is AI-assisted and may contain misrepresentations, outdated information, or inconsistencies with the actual code. If you find any errors or have suggestions for improvement, please provide feedback via [GitHub Issues](https://github.com/Uniquenium/Uniquenium/issues) or directly [edit this page](https://github.com/Uniquenium/Docs/edit/main/en/index.md) to submit a PR.
+:::
