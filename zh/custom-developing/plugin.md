@@ -1038,17 +1038,28 @@ UniDeskComBase {
 ### 使用 `deploy.bat`
 
 ```batch
-deploy.bat                  :: 正常打包
-deploy.bat --clean          :: 先清理 dist 目录
-deploy.bat --build-dir <path>  :: 指定构建目录
+deploy.bat                              :: 正常打包（自动查找 build/ 下的 temp/bin）
+deploy.bat --clean                      :: 先清理 dist 目录再打包
+deploy.bat --build-dir <path>           :: 指定构建输出目录
+deploy.bat --build-dir=<path>            :: 使用等号指定构建输出目录
+deploy.bat -b <path>                    :: 短格式指定构建输出目录
+deploy.bat "<path>"                     :: 直接传入路径作为第一个参数
+```
+
+**指定构建输出目录示例：**
+```batch
+deploy.bat --build-dir "build\Qt_MSVC2022_64bit-Release\temp\bin"
+deploy.bat -b "build\Qt_MSVC2022_64bit-Release\temp\bin"
+deploy.bat "build\Qt_MSVC2022_64bit-Release\temp\bin"
 ```
 
 打包脚本会：
-1. 自动在 `build/` 目录中查找 DLL 构建产物
-2. 读取 `plugin-info.json` 获取插件 ID
-3. 将 DLL、QML 文件、资源文件复制到 `dist/{pluginId}/`
-4. 从源码目录复制 `plugin-info.json`、`defaultSettings.json`、`SignalHandler.qml` 等
-5. 清理 `qmldir` 和临时文件
+1. 优先在 `build/` 下查找 `temp/bin/` 目录作为构建输出
+2. 从 `plugin-info.json` 的 `dlls` 字段获取 DLL 名称
+3. 从 `plugin-info.json` 的 `id` 字段获取插件 ID
+4. 将 DLL、QML 文件复制到 `dist/{pluginId}/`
+5. 从源码目录复制 `plugin-info.json`、`defaultSettings.json`、`SignalHandler.qml` 等
+6. 排除 `qmldir`、`.qmltypes`、`.qrc` 和构建产物文件
 
 ### 手动安装
 

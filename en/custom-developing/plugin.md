@@ -1039,17 +1039,28 @@ UniDeskComBase {
 ### Using `deploy.bat`
 
 ```batch
-deploy.bat                  :: Normal packaging
-deploy.bat --clean          :: Clean the dist directory first
-deploy.bat --build-dir <path>  :: Specify the build directory
+deploy.bat                              :: Normal packaging (auto-finds temp/bin under build/)
+deploy.bat --clean                      :: Clean the dist directory before packaging
+deploy.bat --build-dir <path>           :: Specify the build output directory
+deploy.bat --build-dir=<path>           :: Use equals sign to specify the build output directory
+deploy.bat -b <path>                    :: Short form for specifying the build output directory
+deploy.bat "<path>"                     :: Pass the path directly as the first argument
+```
+
+**Examples of specifying the build output directory:**
+```batch
+deploy.bat --build-dir "build\Qt_MSVC2022_64bit-Release\temp\bin"
+deploy.bat -b "build\Qt_MSVC2022_64bit-Release\temp\bin"
+deploy.bat "build\Qt_MSVC2022_64bit-Release\temp\bin"
 ```
 
 The packaging script will:
-1. Automatically find DLL build artifacts in the `build/` directory
-2. Read `plugin-info.json` to obtain the plugin ID
-3. Copy DLL, QML files, and resource files to `dist/{pluginId}/`
-4. Copy `plugin-info.json`, `defaultSettings.json`, `SignalHandler.qml`, etc. from the source directory
-5. Clean up `qmldir` and temporary files
+1. First look for `temp/bin/` directory under `build/` as the build output
+2. Read DLL name from the `dlls` field in `plugin-info.json`
+3. Read plugin ID from the `id` field in `plugin-info.json`
+4. Copy DLL and QML files to `dist/{pluginId}/`
+5. Copy `plugin-info.json`, `defaultSettings.json`, `SignalHandler.qml`, etc. from the source directory
+6. Exclude `qmldir`, `.qmltypes`, `.qrc`, and build artifact files
 
 ### Manual Installation
 
