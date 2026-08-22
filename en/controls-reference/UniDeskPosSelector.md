@@ -4,7 +4,8 @@ editLink: true
 ---
 
 # UniDeskPosSelector Type
-Position selector control, used for selecting or previewing component positions.
+
+Position selector control, used to precisely set component X/Y coordinates in the visual editor, with alignment operations relative to other components.
 
 | Project | Description |
 |---------|-------------|
@@ -13,23 +14,58 @@ Position selector control, used for selecting or previewing component positions.
 | Inherits | QtQuick Item |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskPosSelector.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskPosSelector.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskPosSelector.md).
+::: warning Editor Only
+This control is mainly used internally by the Uniquenium visual editor.
 :::
 
-## Basic Usage
+## Custom Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `editingComponent` | `Item` | Component currently being edited |
+| `horizontalAlignComponent` | `var` | Horizontal alignment reference component |
+| `verticalAlignComponent` | `var` | Vertical alignment reference component |
+| `comManager` | `var` | Component manager reference |
+
+## Sub-controls
+
+| Control | Description |
+|---------|-------------|
+| `horizontalCoordTextField` (`UniDeskSpinBox`) | X coordinate input |
+| `verticalCoordTextField` (`UniDeskSpinBox`) | Y coordinate input |
+| `horizontalComBox` (`UniDeskComBox`) | Horizontal alignment reference selection |
+| `verticalComBox` (`UniDeskComBox`) | Vertical alignment reference selection |
+| `horiAlignLeftButton` | Left align button |
+| `horiAlignCenterButton` | Horizontal center align button |
+| `horiAlignRightButton` | Right align button |
+| `vertAlignTopButton` | Top align button |
+| `vertAlignCenterButton` | Vertical center align button |
+| `vertAlignBottomButton` | Bottom align button |
+
+## Behavior
+
+- Coordinate range dynamically calculated from desktop size
+- Supports alignment relative to other components or relative to screen
+- All modifications auto-call `editingComponent.saveComToFile()`
+- Listens to `xChanged`, `yChanged`, `endDrag` signals for auto-refresh
+
+## Methods
+
+### `function refreshPosition()`
+Refresh coordinate display.
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskPosSelector {
-    width: 200
-    height: 150
-    onPositionChanged: console.log("Position changed")
+    comManager: comManager
+    editingComponent: someComponent
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskSizeSelector](/en/controls-reference/UniDeskSizeSelector.md) - Size selector
-- [Glossary](/en/glossary.md)
+- [UniDeskSizeSelector](./UniDeskSizeSelector.md) — Size selector
+- [UniDeskComBox](./UniDeskComBox.md) — Component combo box

@@ -148,6 +148,16 @@ After first launching Uniquenium, it is recommended to perform the following bas
 - Check "Auto-start on boot" in the "Features" tab
 - The program will automatically add itself to Windows startup items
 
+### 5. Install Official Plugins (Recommended)
+
+The official plugin pack provides rich extension components such as system monitors, weather, calendar, media player, and more. Installation is recommended for the full experience.
+
+- View the available plugin list in the "Plugins" tab
+- Click the "Install" button on a plugin card to install
+- You can also download offline packages from the [Official Plugins Repository](https://github.com/Uniquenium/Official-Plugins)
+
+For details, see the [Official Plugins documentation](/en/official-plugins.md).
+
 ## Verifying the Installation
 
 After installation, you can verify the program is working correctly by:
@@ -163,7 +173,7 @@ After installation, you can verify the program is working correctly by:
 ### Installer Version
 - Open "Settings" → "Apps" → "Installed apps"
 - Find Uniquenium, click "Uninstall"
-- Or run `uninstall.exe` from the installation directory
+- Or run the uninstaller from the installation directory
 
 ### Portable / Source Version
 - Simply delete the program directory

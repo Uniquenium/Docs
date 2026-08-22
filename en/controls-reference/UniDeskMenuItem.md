@@ -4,53 +4,58 @@ editLink: true
 ---
 
 # UniDeskMenuItem Type
-Menu item
 
+Menu item control based on QtQuick `MenuItem`. Supports icons, submenu arrows, checkmarks, and highlight states.
+
+| Item | Description |
+|------|-------------|
 | Control Type | Visual Control |
-|-------------|----------------|
 | Source File | `UniDesk/Controls/UniDeskMenuItem.qml` |
-| Inherits | QtQuick Item |
-| QML Import | `import UniDesk.Controls 1.0` |
+| Inherits | QtQuick Templates MenuItem |
+| QML Import | `import UniDesk 1.0` |
 
-## Introduction
+## Custom Properties
 
-UniDeskMenuItem is a single clickable item within a [UniDeskMenu](./UniDeskMenu.md), used to display text and icons, and to trigger corresponding actions on click.
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `disabled` | `bool` | `false` | Whether the item is disabled |
+| `iconDelegate` | `Component` | — | Icon delegate (defaults to internal icon component) |
+| `iconSpacing` | `int` | `5` | Spacing between icon and text |
+| `iconSource` | `string` | — | Icon source path |
+| `iconSize` | `int` | `16` | Icon size |
+| `textColor` | `color` | Theme-adaptive | Text color |
 
-## Properties
+## Style
 
-### `property string text`
-Display text of the menu item.
+- Auto-height based on content
+- Themed background on hover (`highlighted`)
+- Font: `UniDeskTextStyle.little`
+- Supports checkmarks (`checkable`) and submenu arrows
 
-### `property string iconSource`
-Icon source path.
-
-### `property bool checkable`
-Whether the item is checkable (can be selected).
-
-### `property bool checked`
-Current selected state.
-
-### `property bool enabled`
-Whether the item is enabled.
-
-## Basic Usage
+## Example
 
 ```qml
-import UniDesk.Controls 1.0
+import UniDesk 1.0
 
-UniDeskMenuItem {
-    text: "Copy"
-    iconSource: "qrc:/icon/copy.svg"
-    onClicked: console.log("Copy command executed")
+UniDeskMenu {
+    UniDeskMenuItem {
+        text: "Open"
+        iconSource: "qrc:/media/img/folder.svg"
+        onTriggered: console.log("open")
+    }
+    UniDeskMenuItem {
+        text: "Save As"
+        iconSource: "qrc:/media/img/save.svg"
+    }
+    UniDeskMenuSeparator {}
+    UniDeskMenuItem {
+        text: "Exit"
+        onTriggered: Qt.quit()
+    }
 }
 ```
 
-## Related Controls
+## Related
 
-- [UniDeskMenu](/en/controls-reference/UniDeskMenu.md) - Menu container
-- [UniDeskMenuSeparator](/en/controls-reference/UniDeskMenuSeparator.md) - Separator
-
-## Related Documentation
-
-- [UniDeskButton](/en/controls-reference/UniDeskButton.md) - Button control
-- [Glossary](/en/glossary.md)
+- [UniDeskMenu](./UniDeskMenu.md) — Menu
+- [UniDeskMenuSeparator](./UniDeskMenuSeparator.md) — Menu separator

@@ -5,7 +5,7 @@ editLink: true
 
 # UniDeskPosSelector 类型
 
-位置选择器控件，允许用户通过可视化方式选择屏幕上的坐标位置（X, Y），常用于组件放置位置的配置。
+位置选择器控件，在可视化编辑器中用于精确设置组件的 X/Y 坐标，并支持以其他组件为参照的对齐操作。
 
 | 项目 | 说明 |
 |------|------|
@@ -14,24 +14,58 @@ editLink: true
 | 继承 | QtQuick Item |
 | QML 导入方式 | `import UniDesk.Controls 1.0` |
 
-::: info 文档待完善
-本控件的详细属性、方法和示例正在编写中。你可以先查看源代码 [UniDeskPosSelector.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskPosSelector.qml)，或帮助我们 [完善本文档](https://github.com/Uniquenium/Docs/edit/main/zh/controls-reference/UniDeskPosSelector.md)。
+::: warning 编辑器专用
+本控件主要供 Uniquenium 可视化编辑器内部使用。
 :::
 
-## 基本用法
+## 自定义属性
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `editingComponent` | `Item` | 当前正在编辑的组件 |
+| `horizontalAlignComponent` | `var` | 横向对齐的参照组件 |
+| `verticalAlignComponent` | `var` | 纵向对齐的参照组件 |
+| `comManager` | `var` | 组件管理器引用 |
+
+## 子控件
+
+| 控件 | 说明 |
+|------|------|
+| `horizontalCoordTextField` (`UniDeskSpinBox`) | X 坐标输入 |
+| `verticalCoordTextField` (`UniDeskSpinBox`) | Y 坐标输入 |
+| `horizontalComBox` (`UniDeskComBox`) | 横向对齐参照组件选择 |
+| `verticalComBox` (`UniDeskComBox`) | 纵向对齐参照组件选择 |
+| `horiAlignLeftButton` | 左对齐按钮 |
+| `horiAlignCenterButton` | 横向居中对齐按钮 |
+| `horiAlignRightButton` | 右对齐按钮 |
+| `vertAlignTopButton` | 上对齐按钮 |
+| `vertAlignCenterButton` | 纵向居中对齐按钮 |
+| `vertAlignBottomButton` | 下对齐按钮 |
+
+## 行为
+
+- 坐标范围根据桌面尺寸动态计算
+- 支持相对于其他组件对齐或相对于屏幕对齐
+- 所有修改自动调用 `editingComponent.saveComToFile()`
+- 监听组件的 `xChanged`、`yChanged`、`endDrag` 信号自动刷新
+
+## 方法
+
+### `function refreshPosition()`
+刷新坐标显示。
+
+## 示例
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskPosSelector {
-    // 选择屏幕位置
-    onPositionChanged: {
-        console.log("选中位置:", position.x, position.y)
-    }
+    comManager: comManager
+    editingComponent: someComponent
 }
 ```
 
 ## 相关文档
 
-- [UniDeskSizeSelector](/controls-reference/UniDeskSizeSelector.md) - 尺寸选择器
-- [术语表](/glossary.md)
+- [UniDeskSizeSelector](./UniDeskSizeSelector.md) — 尺寸选择器
+- [UniDeskComBox](./UniDeskComBox.md) — 组件选择框

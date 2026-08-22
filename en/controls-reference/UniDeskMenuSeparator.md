@@ -4,47 +4,36 @@ editLink: true
 ---
 
 # UniDeskMenuSeparator Type
-Menu separator
 
+Menu separator control based on QtQuick `Rectangle`. Provides a thin line between menu items.
+
+| Item | Description |
+|------|-------------|
 | Control Type | Visual Control |
-|-------------|----------------|
 | Source File | `UniDesk/Controls/UniDeskMenuSeparator.qml` |
-| Inherits | QtQuick Item |
-| QML Import | `import UniDesk.Controls 1.0` |
+| Inherits | QtQuick Rectangle |
+| QML Import | `import UniDesk 1.0` |
 
-## Introduction
+## Style
 
-UniDeskMenuSeparator is a visual separator line within a [UniDeskMenu](./UniDeskMenu.md), used to divide different function groups.
+- Width: fills parent
+- Height: 1.5px
+- Color auto-adapts to light/dark themes (black in light / white in dark)
 
-## Properties
-
-This control has no custom properties.
-
-## Basic Usage
+## Example
 
 ```qml
-import UniDesk.Controls 1.0
+import UniDesk 1.0
 
 UniDeskMenu {
-    // ...
-    UniDeskMenuItem {
-        text: "Cut"
-    }
-
-    UniDeskMenuSeparator { }
-
-    UniDeskMenuItem {
-        text: "Paste"
-    }
+    UniDeskMenuItem { text: "Cut" }
+    UniDeskMenuItem { text: "Copy" }
+    UniDeskMenuSeparator {}
+    UniDeskMenuItem { text: "Paste" }
 }
 ```
 
-## Related Controls
+## Related
 
-- [UniDeskMenu](/en/controls-reference/UniDeskMenu.md) - Menu container
-- [UniDeskMenuItem](/en/controls-reference/UniDeskMenuItem.md) - Menu item
-
-## Related Documentation
-
-- [UniDeskInfoBar](/en/controls-reference/UniDeskInfoBar.md) - Info bar
-- [Glossary](/en/glossary.md)
+- [UniDeskMenu](./UniDeskMenu.md) — Menu
+- [UniDeskMenuItem](./UniDeskMenuItem.md) — Menu item

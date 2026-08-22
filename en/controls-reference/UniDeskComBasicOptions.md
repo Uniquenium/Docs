@@ -5,7 +5,7 @@ editLink: true
 
 # UniDeskComBasicOptions Type
 
-Basic options panel control for component editing, providing basic property editing UI for common properties like position, size, and visibility.
+Component basic options panel control, displays basic property editing UI (name, parent, position, size, rotation, Z-order, opacity) for the selected component in the visual editor.
 
 | Project | Description |
 |---------|-------------|
@@ -14,26 +14,53 @@ Basic options panel control for component editing, providing basic property edit
 | Inherits | QtQuick Item |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskComBasicOptions.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskComBasicOptions.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskComBasicOptions.md).
+::: warning Editor Only
+This control is mainly used internally by the Uniquenium visual editor.
 :::
 
-## Basic Usage
+## Custom Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `comManager` | `var` | Component manager reference |
+| `editingComponent` | `Item` | Component currently being edited |
+
+## Sub-controls
+
+| Control | Description |
+|---------|-------------|
+| `idField` (`UniDeskTextField`) | Component name editing |
+| `parentComboBox` (`UniDeskComBox`) | Parent component selection |
+| `posSelector` (`UniDeskPosSelector`) | Position editing |
+| `sizeSelector` (`UniDeskSizeSelector`) | Size editing |
+| `rotationSpinBox` (`UniDeskSpinBox`) | Rotation angle (0-359) |
+| `zSpinBox` (`UniDeskSpinBox`) | Z-order (-99999 to 99999) |
+| `opacitySpinBox` (`UniDeskSpinBox`) | Opacity (0-100) |
+
+## Behavior
+
+- All property modifications auto-call `editingComponent.saveComToFile()`
+- Z-order modification additionally calls `comManager.updateComTreeZ()`
+- Component name change triggers `editingComponent.name = text`
+
+## Methods
+
+### `function refreshPosition()`
+Refresh the position selector display.
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskComBasicOptions {
-    component: myComponent
+    comManager: comManager
+    editingComponent: someComponent
 }
 ```
 
-## Related Controls
+## Related
 
-- [UniDeskComBase](/en/controls-reference/UniDeskComBase.md) - Component base
-- [UniDeskComRectEditor](/en/controls-reference/UniDeskComRectEditor.md) - Rectangle editor
-
-## Related Documentation
-
-- [Plugin Development Guide](/en/custom-developing/plugin.md)
-- [Glossary](/en/glossary.md)
+- [UniDeskComManager](./UniDeskComManager.md) — Component manager
+- [UniDeskPosSelector](./UniDeskPosSelector.md) — Position selector
+- [UniDeskSizeSelector](./UniDeskSizeSelector.md) — Size selector

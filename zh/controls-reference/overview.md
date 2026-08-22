@@ -179,12 +179,16 @@ UniDeskWindow {
 
 | 单例 | 用途 | 常用内容 |
 |------|------|---------|
-| [UniDeskGlobals](/controls-reference/singletons/UniDeskGlobals.md) | 全局状态 | `isLight` 主题模式，事件通知 |
-| [UniDeskTools](/controls-reference/singletons/UniDeskTools.md) | 工具函数 | 颜色切换、壁纸操作、字体管理、UUID 生成 |
-| [UniDeskSettings](/controls-reference/singletons/UniDeskSettings.md) | 设置访问 | `primaryColor` 主题色，各类配置读写 |
-| [UniDeskTextStyle](/controls-reference/singletons/UniDeskTextStyle.md) | 预设字体 | `tiny` / `little` / `middle` / `big` 四级字号 |
-| [UniDeskSettingsWindow](/controls-reference/singletons/UniDeskSettingsWindow.md) | 设置窗口 | 程序设置 UI 入口 |
+| [UniDeskGlobals](/controls-reference/cpp-ext/UniDeskGlobals.md) | 全局状态 | `isLight` 主题模式，事件通知 |
+| [UniDeskTools](/controls-reference/cpp-ext/UniDeskTools.md) | 工具函数 | 颜色切换、壁纸操作、字体管理、UUID 生成 |
+| [UniDeskSettings](/controls-reference/cpp-ext/UniDeskSettings.md) | 设置访问 | `primaryColor` 主题色，各类配置读写 |
+| [UniDeskTextStyle](/controls-reference/cpp-ext/UniDeskTextStyle.md) | 预设字体 | `tiny` / `little` / `middle` / `big` 四级字号 |
+| [UniDeskExpr](/controls-reference/cpp-ext/UniDeskExpr.md) | 表达式引擎 | `%变量` 替换、`%{}` 数学表达式 |
+| [UniDeskPluginMgr](/controls-reference/cpp-ext/UniDeskPluginMgr.md) | 插件管理 | 插件加载、卸载、元数据管理 |
+| [UniDeskTempleteMgr](/controls-reference/cpp-ext/UniDeskTempleteMgr.md) | 模板管理 | 模板导入导出、预设变量 |
+| [UniDeskComponentsData](/controls-reference/cpp-ext/UniDeskComponentsData.md) | 组件数据 | 组件与页面 JSON 数据持久化 |
 | [UniDeskComManager](/controls-reference/singletons/UniDeskComManager.md) | 组件管理 | 组件注册、创建、销毁 |
+| [UniDeskSettingsWindow](/controls-reference/singletons/UniDeskSettingsWindow.md) | 设置窗口 | 程序设置 UI 入口 |
 
 ---
 
@@ -246,10 +250,14 @@ property color finalColor: UniDeskTools.switchColor(
 根据功能分类查看每个控件的详细 API 文档：
 
 ### 单例 (Singletons)
-- [UniDeskGlobals](/controls-reference/singletons/UniDeskGlobals.md)
-- [UniDeskTools](/controls-reference/singletons/UniDeskTools.md)
-- [UniDeskSettings](/controls-reference/singletons/UniDeskSettings.md)
-- [UniDeskTextStyle](/controls-reference/singletons/UniDeskTextStyle.md)
+- [UniDeskGlobals](/controls-reference/cpp-ext/UniDeskGlobals.md)
+- [UniDeskTools](/controls-reference/cpp-ext/UniDeskTools.md)
+- [UniDeskSettings](/controls-reference/cpp-ext/UniDeskSettings.md)
+- [UniDeskTextStyle](/controls-reference/cpp-ext/UniDeskTextStyle.md)
+- [UniDeskExpr](/controls-reference/cpp-ext/UniDeskExpr.md)
+- [UniDeskPluginMgr](/controls-reference/cpp-ext/UniDeskPluginMgr.md)
+- [UniDeskTempleteMgr](/controls-reference/cpp-ext/UniDeskTempleteMgr.md)
+- [UniDeskComponentsData](/controls-reference/cpp-ext/UniDeskComponentsData.md)
 - [UniDeskComManager](/controls-reference/singletons/UniDeskComManager.md)
 - [UniDeskSettingsWindow](/controls-reference/singletons/UniDeskSettingsWindow.md)
 

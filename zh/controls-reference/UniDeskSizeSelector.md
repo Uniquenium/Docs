@@ -5,7 +5,7 @@ editLink: true
 
 # UniDeskSizeSelector 类型
 
-尺寸选择器控件，允许用户通过可视化方式选择组件的宽度和高度，常用于组件尺寸的配置。
+尺寸选择器控件，在可视化编辑器中用于精确设置组件的宽度和高度。
 
 | 项目 | 说明 |
 |------|------|
@@ -14,24 +14,44 @@ editLink: true
 | 继承 | QtQuick Item |
 | QML 导入方式 | `import UniDesk.Controls 1.0` |
 
-::: info 文档待完善
-本控件的详细属性、方法和示例正在编写中。你可以先查看源代码 [UniDeskSizeSelector.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskSizeSelector.qml)，或帮助我们 [完善本文档](https://github.com/Uniquenium/Docs/edit/main/zh/controls-reference/UniDeskSizeSelector.md)。
+::: warning 编辑器专用
+本控件主要供 Uniquenium 可视化编辑器内部使用。
 :::
 
-## 基本用法
+## 自定义属性
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `editingComponent` | `Item` | 当前正在编辑的组件 |
+
+## 子控件
+
+| 控件 | 说明 |
+|------|------|
+| `widthSpinBox` (`UniDeskSpinBox`) | 宽度（0-3000） |
+| `heightSpinBox` (`UniDeskSpinBox`) | 高度（0-3000） |
+
+## 行为
+
+- 尺寸修改后自动调用 `editingComponent.saveComToFile()`
+- 监听组件的 `widthChanged`、`heightChanged`、`endDrag`、`componentCompleted` 信号，自动刷新显示
+
+## 方法
+
+### `function refreshSize()`
+刷新宽度和高度显示。
+
+## 示例
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskSizeSelector {
-    // 选择尺寸
-    onSizeChanged: {
-        console.log("选中尺寸:", size.width, "x", size.height)
-    }
+    editingComponent: someComponent
 }
 ```
 
 ## 相关文档
 
-- [UniDeskPosSelector](/controls-reference/UniDeskPosSelector.md) - 位置选择器
-- [术语表](/glossary.md)
+- [UniDeskPosSelector](./UniDeskPosSelector.md) — 位置选择器
+- [UniDeskSpinBox](./UniDeskSpinBox.md) — 数值输入框

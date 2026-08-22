@@ -4,10 +4,10 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
     title: "官网",
-    description: "Uniquenium - 集美化与实用功能于一体的开源桌面自定义工具",
+    description: "Uniquenium - 高度自由的开源桌面自定义工具",
     head: [
         ['link', { rel: 'icon', href: '/uq-d.png' }],
-        ['meta', { name: 'keywords', content: 'Uniquenium, UniDesk, 桌面工具, 自定义桌面, QML, Qt, Python' }],
+        ['meta', { name: 'keywords', content: 'Uniquenium, UniDesk, 桌面工具, 自定义桌面, QML, Qt, C++' }],
         ['meta', { name: 'author', content: 'Uniquenium Development Team' }],
     ],
     rewrites: {
@@ -33,6 +33,7 @@ export default withMermaid(defineConfig({
                         text: 'User Guide', 
                         items: [
                             { text: 'Components Overview', link: '/en/components-wiki/overview.md' },
+                            { text: 'Component Encyclopedia', link: '/en/component-encyclopedia/overview.md' },
                             { text: 'Glossary', link: '/en/glossary.md' },
                             { text: 'FAQ', link: '/en/faq.md' },
                         ]
@@ -41,7 +42,9 @@ export default withMermaid(defineConfig({
                         text: 'Development', 
                         items: [
                             { text: 'Controls Reference', link: '/en/controls-reference/overview.md' },
+                            { text: 'CppExt Backend', link: '/en/controls-reference/cpp-ext/overview.md' },
                             { text: 'Custom Development', link: '/en/custom-developing/plugin.md' },
+                            { text: 'Official Plugins', link: '/en/official-plugins.md' },
                         ]
                     },
                     { text: 'About', link: '/en/about.md' }
@@ -138,6 +141,18 @@ export default withMermaid(defineConfig({
                                 { text: 'Plugin Development Guide', link: '/en/custom-developing/plugin.md' },
                                 { text: 'Template System', link: '/en/custom-developing/template.md' },
                                 { text: 'Custom Cursor Styles', link: '/en/custom-developing/cursor-style.md' },
+                                { text: 'Official Plugins', link: '/en/official-plugins.md' },
+                            ]
+                        }
+                    ],
+                    '/en/component-encyclopedia/': [
+                        {
+                            text: 'Component Encyclopedia',
+                            items: [
+                                { text: 'Overview', link: '/en/component-encyclopedia/overview.md' },
+                                { text: 'UDCText', link: '/en/component-encyclopedia/UDCText.md' },
+                                { text: 'UDCImage', link: '/en/component-encyclopedia/UDCImage.md' },
+                                { text: 'UDCFrame', link: '/en/component-encyclopedia/UDCFrame.md' },
                             ]
                         }
                     ],
@@ -155,11 +170,7 @@ export default withMermaid(defineConfig({
                             text: 'Singletons',
                             items: [
                                 { text: 'UniDeskComManager', link: '/en/controls-reference/singletons/UniDeskComManager.md' },
-                                { text: 'UniDeskGlobals', link: '/en/controls-reference/singletons/UniDeskGlobals.md' },
-                                { text: 'UniDeskSettings', link: '/en/controls-reference/singletons/UniDeskSettings.md' },
                                 { text: 'UniDeskSettingsWindow', link: '/en/controls-reference/singletons/UniDeskSettingsWindow.md' },
-                                { text: 'UniDeskTextStyle', link: '/en/controls-reference/singletons/UniDeskTextStyle.md' },
-                                { text: 'UniDeskTools', link: '/en/controls-reference/singletons/UniDeskTools.md' },
                             ]
                         },
                         {
@@ -249,6 +260,22 @@ export default withMermaid(defineConfig({
                             items: [
                                 { text: 'UniDeskObject', link: '/en/controls-reference/UniDeskObject.md' },
                             ]
+                        },
+                        {
+                            text: 'CppExt Backend',
+                            items: [
+                                { text: 'Overview', link: '/en/controls-reference/cpp-ext/overview.md' },
+                                { text: 'UniDeskGlobals', link: '/en/controls-reference/cpp-ext/UniDeskGlobals.md' },
+                                { text: 'UniDeskSettings', link: '/en/controls-reference/cpp-ext/UniDeskSettings.md' },
+                                { text: 'UniDeskTextStyle', link: '/en/controls-reference/cpp-ext/UniDeskTextStyle.md' },
+                                { text: 'UniDeskTools', link: '/en/controls-reference/cpp-ext/UniDeskTools.md' },
+                                { text: 'UniDeskPluginMgr', link: '/en/controls-reference/cpp-ext/UniDeskPluginMgr.md' },
+                                { text: 'UniDeskTempleteMgr', link: '/en/controls-reference/cpp-ext/UniDeskTempleteMgr.md' },
+                                { text: 'UniDeskExpr', link: '/en/controls-reference/cpp-ext/UniDeskExpr.md' },
+                                { text: 'UniDeskSystemInfo', link: '/en/controls-reference/cpp-ext/UniDeskSystemInfo.md' },
+                                { text: 'UniDeskComponentsData', link: '/en/controls-reference/cpp-ext/UniDeskComponentsData.md' },
+                                { text: 'UniDeskPluginInterface', link: '/en/controls-reference/cpp-ext/UniDeskPluginInterface.md' },
+                            ]
                         }
                     ]
                 },
@@ -282,6 +309,7 @@ export default withMermaid(defineConfig({
                         text: '使用指南', 
                         items: [
                             { text: '组件百科概览', link: '/components-wiki/overview.md' },
+                            { text: '组件百科', link: '/component-encyclopedia/overview.md' },
                             { text: '术语表', link: '/glossary.md' },
                             { text: '常见问题 FAQ', link: '/faq.md' },
                         ]
@@ -290,7 +318,9 @@ export default withMermaid(defineConfig({
                         text: '开发参考', 
                         items: [
                             { text: '控件库概览', link: '/controls-reference/overview.md' },
+                            { text: 'CppExt 后端', link: '/controls-reference/cpp-ext/overview.md' },
                             { text: '自定义开发', link: '/custom-developing/plugin.md' },
+                            { text: '官方插件', link: '/official-plugins.md' },
                         ]
                     },
                     { text: '关于', link: '/about.md' }
@@ -387,6 +417,18 @@ export default withMermaid(defineConfig({
                                 { text: '插件开发指南', link: '/custom-developing/plugin.md' },
                                 { text: '模板系统', link: '/custom-developing/template.md' },
                                 { text: '自定义光标样式', link: '/custom-developing/cursor-style.md' },
+                                { text: '官方插件', link: '/official-plugins.md' },
+                            ]
+                        }
+                    ],
+                    '/component-encyclopedia/': [
+                        {
+                            text: '组件百科',
+                            items: [
+                                { text: '概览', link: '/component-encyclopedia/overview.md' },
+                                { text: 'UDCText', link: '/component-encyclopedia/UDCText.md' },
+                                { text: 'UDCImage', link: '/component-encyclopedia/UDCImage.md' },
+                                { text: 'UDCFrame', link: '/component-encyclopedia/UDCFrame.md' },
                             ]
                         }
                     ],
@@ -405,11 +447,7 @@ export default withMermaid(defineConfig({
                             text: '单例 (Singletons)',
                             items: [
                                 { text: 'UniDeskComManager', link: '/controls-reference/singletons/UniDeskComManager.md' },
-                                { text: 'UniDeskGlobals', link: '/controls-reference/singletons/UniDeskGlobals.md' },
-                                { text: 'UniDeskSettings', link: '/controls-reference/singletons/UniDeskSettings.md' },
                                 { text: 'UniDeskSettingsWindow', link: '/controls-reference/singletons/UniDeskSettingsWindow.md' },
-                                { text: 'UniDeskTextStyle', link: '/controls-reference/singletons/UniDeskTextStyle.md' },
-                                { text: 'UniDeskTools', link: '/controls-reference/singletons/UniDeskTools.md' },
                             ]
                         },
                         {
@@ -498,6 +536,22 @@ export default withMermaid(defineConfig({
                             text: '基础对象',
                             items: [
                                 { text: 'UniDeskObject', link: '/controls-reference/UniDeskObject.md' },
+                            ]
+                        },
+                        {
+                            text: 'CppExt 后端',
+                            items: [
+                                { text: '总览', link: '/controls-reference/cpp-ext/overview.md' },
+                                { text: 'UniDeskGlobals', link: '/controls-reference/cpp-ext/UniDeskGlobals.md' },
+                                { text: 'UniDeskSettings', link: '/controls-reference/cpp-ext/UniDeskSettings.md' },
+                                { text: 'UniDeskTextStyle', link: '/controls-reference/cpp-ext/UniDeskTextStyle.md' },
+                                { text: 'UniDeskTools', link: '/controls-reference/cpp-ext/UniDeskTools.md' },
+                                { text: 'UniDeskPluginMgr', link: '/controls-reference/cpp-ext/UniDeskPluginMgr.md' },
+                                { text: 'UniDeskTempleteMgr', link: '/controls-reference/cpp-ext/UniDeskTempleteMgr.md' },
+                                { text: 'UniDeskExpr', link: '/controls-reference/cpp-ext/UniDeskExpr.md' },
+                                { text: 'UniDeskSystemInfo', link: '/controls-reference/cpp-ext/UniDeskSystemInfo.md' },
+                                { text: 'UniDeskComponentsData', link: '/controls-reference/cpp-ext/UniDeskComponentsData.md' },
+                                { text: 'UniDeskPluginInterface', link: '/controls-reference/cpp-ext/UniDeskPluginInterface.md' },
                             ]
                         }
                     ]

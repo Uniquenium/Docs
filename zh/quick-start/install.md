@@ -148,6 +148,16 @@ sudo pacman -S kf6-window-system kf6-globalaccel
 - 在「功能」选项卡中勾选「开机自启动」
 - 程序会自动添加到 Windows 启动项
 
+### 5. 安装官方插件（推荐）
+
+Uniquenium 的官方插件包提供了系统监控、天气、日历、媒体播放等丰富的扩展组件，建议安装以获得完整体验。
+
+- 在「插件」选项卡中查看可用插件列表
+- 点击插件卡片上的「安装」按钮即可安装
+- 也可以从 [官方插件仓库](https://github.com/Uniquenium/Official-Plugins) 下载离线安装包
+
+详细信息请参考 [官方插件文档](/official-plugins.md)。
+
 ## 验证安装
 
 安装完成后，你可以通过以下方式验证程序是否正常工作：
@@ -163,7 +173,7 @@ sudo pacman -S kf6-window-system kf6-globalaccel
 ### 安装程序版
 - 打开「设置」→「应用」→「已安装的应用」
 - 找到 Uniquenium，点击「卸载」
-- 或运行安装目录下的 `uninstall.exe`
+- 或运行安装目录下的「卸载程序」
 
 ### 便携版/源码版
 - 直接删除程序目录即可

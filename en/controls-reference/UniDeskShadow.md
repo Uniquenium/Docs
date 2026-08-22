@@ -5,7 +5,7 @@ editLink: true
 
 # UniDeskShadow Type
 
-Shadow effect control, adding drop shadows to other controls to enhance UI layering.
+High-performance shadow control using multiple layered `Rectangle` items to simulate shadow effects. Several times faster than `DropShadow`.
 
 | Project | Description |
 |---------|-------------|
@@ -14,26 +14,45 @@ Shadow effect control, adding drop shadows to other controls to enhance UI layer
 | Inherits | QtQuick Item |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskShadow.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskShadow.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskShadow.md).
-:::
+## Custom Properties
 
-## Basic Usage
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `color` | `color` | Dark `#000000` / Light `#999999` | Shadow color |
+| `elevation` | `int` | `5` | Shadow level (determines thickness and layers) |
+| `radius` | `int` | `4` | Corner radius |
+
+## Principle
+
+Uses `Repeater` to create `elevation` `Rectangle` items, each offset by 1px with decreasing opacity:
+
+```
+opacity: 0.01 * (elevation - index + 1)
+anchors.margins: -index
+border.width: index
+radius: radius + index
+```
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
-UniDeskFrame {
+Rectangle {
     width: 200
     height: 100
+    color: "#fff"
+    radius: 8
 
     UniDeskShadow {
-        // Add shadow for parent control
+        anchors.fill: parent
+        elevation: 8
+        radius: 8
     }
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskFrame](/en/controls-reference/UniDeskFrame.md) - Container control
-- [UniDeskWindow](/en/controls-reference/UniDeskWindow.md) - Window control
+- [UniDeskFrame](./UniDeskFrame.md) — Frame container
+- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — Text style

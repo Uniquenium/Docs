@@ -5,7 +5,7 @@ editLink: true
 
 # UniDeskPathSelector Type
 
-File or directory path selector control, supporting the selection of file or directory paths, typically used in settings panels.
+File or directory path selector control. Combines a text input field with a browse button (opens `FileDialog` or `FolderDialog`), supporting manual path input and dialog selection.
 
 | Project | Description |
 |---------|-------------|
@@ -14,23 +14,47 @@ File or directory path selector control, supporting the selection of file or dir
 | Inherits | QtQuick Item |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskPathSelector.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskPathSelector.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskPathSelector.md).
-:::
+## Custom Properties
 
-## Basic Usage
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `path` | `string` | — | Selected path |
+| `mode` | `int` | `UniDeskFileMode.FileModeFile` | File or folder mode |
+| `parentWindow` | `Window` | `null` | Parent window (used to display error messages) |
+
+## Signals
+
+### `submit()`
+Emitted when a valid path is confirmed (via Enter key or dialog selection).
+
+## Enums
+
+### `UniDeskFileMode`
+
+| Value | Description |
+|-------|-------------|
+| `FileModeFile` (0) | File selection mode |
+| `FileModeFolder` (1) | Folder selection mode |
+
+## Behavior
+
+- Path validation on Enter: checks local file existence or URL validity
+- Empty path allowed
+- Invalid path triggers `parentWindow.showError("路径无效")`
+- Browse button opens `FileDialog` or `FolderDialog` based on `mode`
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskPathSelector {
-    width: 300
-    mode: UniDeskPathSelector.Directory
-    onPathChanged: console.log("Selected path:", path)
+    mode: UniDeskFileMode.FileModeFolder
+    onSubmit: console.log("Path:", path)
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskFileComboBox](/en/controls-reference/UniDeskComboBox.md) - Dropdown control
-- [Glossary](/en/glossary.md)
+- [UniDeskTextField](./UniDeskTextField.md) — Text input
+- [UniDeskButton](./UniDeskButton.md) — Button

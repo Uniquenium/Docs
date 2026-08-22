@@ -179,12 +179,16 @@ General pattern:
 
 | Singleton | Purpose | Common Content |
 |-----------|---------|---------------|
-| [UniDeskGlobals](/en/controls-reference/singletons/UniDeskGlobals.md) | Global state | `isLight` theme mode, event notifications |
-| [UniDeskTools](/en/controls-reference/singletons/UniDeskTools.md) | Tool functions | Color switching, wallpaper operations, font management, UUID generation |
-| [UniDeskSettings](/en/controls-reference/singletons/UniDeskSettings.md) | Settings access | `primaryColor` theme color, various configuration read/write |
-| [UniDeskTextStyle](/en/controls-reference/singletons/UniDeskTextStyle.md) | Preset fonts | `tiny` / `little` / `middle` / `big` four font sizes |
-| [UniDeskSettingsWindow](/en/controls-reference/singletons/UniDeskSettingsWindow.md) | Settings window | Program settings UI entry |
+| [UniDeskGlobals](/en/controls-reference/cpp-ext/UniDeskGlobals.md) | Global state | `isLight` theme mode, event notifications |
+| [UniDeskTools](/en/controls-reference/cpp-ext/UniDeskTools.md) | Tool functions | Color switching, wallpaper operations, font management, UUID generation |
+| [UniDeskSettings](/en/controls-reference/cpp-ext/UniDeskSettings.md) | Settings access | `primaryColor` theme color, various configuration read/write |
+| [UniDeskTextStyle](/en/controls-reference/cpp-ext/UniDeskTextStyle.md) | Preset fonts | `tiny` / `little` / `middle` / `big` four font sizes |
+| [UniDeskExpr](/en/controls-reference/cpp-ext/UniDeskExpr.md) | Expression engine | `%variable` substitution, `%{}` math expressions |
+| [UniDeskPluginMgr](/en/controls-reference/cpp-ext/UniDeskPluginMgr.md) | Plugin management | Plugin loading, unloading, metadata management |
+| [UniDeskTempleteMgr](/en/controls-reference/cpp-ext/UniDeskTempleteMgr.md) | Template management | Template import/export, preset variables |
+| [UniDeskComponentsData](/en/controls-reference/cpp-ext/UniDeskComponentsData.md) | Component data | Component and page JSON data persistence |
 | [UniDeskComManager](/en/controls-reference/singletons/UniDeskComManager.md) | Component management | Component registration, creation, destruction |
+| [UniDeskSettingsWindow](/en/controls-reference/singletons/UniDeskSettingsWindow.md) | Settings window | Program settings UI entry |
 
 ---
 
@@ -246,10 +250,14 @@ property color finalColor: UniDeskTools.switchColor(
 View detailed API documentation for each control by functional category:
 
 ### Singletons
-- [UniDeskGlobals](/en/controls-reference/singletons/UniDeskGlobals.md)
-- [UniDeskTools](/en/controls-reference/singletons/UniDeskTools.md)
-- [UniDeskSettings](/en/controls-reference/singletons/UniDeskSettings.md)
-- [UniDeskTextStyle](/en/controls-reference/singletons/UniDeskTextStyle.md)
+- [UniDeskGlobals](/en/controls-reference/cpp-ext/UniDeskGlobals.md)
+- [UniDeskTools](/en/controls-reference/cpp-ext/UniDeskTools.md)
+- [UniDeskSettings](/en/controls-reference/cpp-ext/UniDeskSettings.md)
+- [UniDeskTextStyle](/en/controls-reference/cpp-ext/UniDeskTextStyle.md)
+- [UniDeskExpr](/en/controls-reference/cpp-ext/UniDeskExpr.md)
+- [UniDeskPluginMgr](/en/controls-reference/cpp-ext/UniDeskPluginMgr.md)
+- [UniDeskTempleteMgr](/en/controls-reference/cpp-ext/UniDeskTempleteMgr.md)
+- [UniDeskComponentsData](/en/controls-reference/cpp-ext/UniDeskComponentsData.md)
 - [UniDeskComManager](/en/controls-reference/singletons/UniDeskComManager.md)
 - [UniDeskSettingsWindow](/en/controls-reference/singletons/UniDeskSettingsWindow.md)
 

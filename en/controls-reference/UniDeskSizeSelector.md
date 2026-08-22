@@ -4,7 +4,8 @@ editLink: true
 ---
 
 # UniDeskSizeSelector Type
-Size selector control, used for selecting or previewing component sizes.
+
+Size selector control, used to precisely set component width and height in the visual editor.
 
 | Project | Description |
 |---------|-------------|
@@ -13,22 +14,44 @@ Size selector control, used for selecting or previewing component sizes.
 | Inherits | QtQuick Item |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskSizeSelector.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskSizeSelector.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskSizeSelector.md).
+::: warning Editor Only
+This control is mainly used internally by the Uniquenium visual editor.
 :::
 
-## Basic Usage
+## Custom Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `editingComponent` | `Item` | Component currently being edited |
+
+## Sub-controls
+
+| Control | Description |
+|---------|-------------|
+| `widthSpinBox` (`UniDeskSpinBox`) | Width (0-3000) |
+| `heightSpinBox` (`UniDeskSpinBox`) | Height (0-3000) |
+
+## Behavior
+
+- Auto-calls `editingComponent.saveComToFile()` after size changes
+- Listens to `widthChanged`, `heightChanged`, `endDrag`, `componentCompleted` signals for auto-refresh
+
+## Methods
+
+### `function refreshSize()`
+Refresh width and height display.
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskSizeSelector {
-    width: 200
-    onSizeChanged: console.log("Size changed")
+    editingComponent: someComponent
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskPosSelector](/en/controls-reference/UniDeskPosSelector.md) - Position selector
-- [Glossary](/en/glossary.md)
+- [UniDeskPosSelector](./UniDeskPosSelector.md) — Position selector
+- [UniDeskSpinBox](./UniDeskSpinBox.md) — Spin box

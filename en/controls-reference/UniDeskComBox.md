@@ -5,37 +5,60 @@ editLink: true
 
 # UniDeskComBox Type
 
-Component container control, used to wrap component controls for displaying bounding boxes in the editor.
+Component selection combo box control based on `UniDeskComboBox`. Used to select parent or related components in the visual editor.
 
 | Project | Description |
 |---------|-------------|
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskComBox.qml` |
-| Inherits | QtQuick Item |
+| Inherits | UniDeskComboBox |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskComBox.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskComBox.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskComBox.md).
+::: warning Editor Only
+This control is mainly used internally by the Uniquenium visual editor.
 :::
 
-## Basic Usage
+## Custom Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `comManager` | `var` | — | Component manager reference (inherited from UniDeskComboBox) |
+| `editingComponent` | `var` | — | Component being edited |
+| `currentComponent` | `var` | — | Currently selected component |
+| `allPages` | `bool` | `false` | Whether to show components from all pages (false = current page only) |
+
+## Features
+
+- Displays three special items: Desktop Layer, Wallpaper Layer, Top Layer
+- Dynamically lists other components (excluding self)
+- Cross-page or same-page filtering
+- Editable (`editable: true`)
+
+## Methods
+
+### `function getNames(list) → list<string>`
+Get component name list (including special layers).
+
+### `function getComByIndex(index) → var`
+Get component object by index.
+
+### `function getIndexByCom(com) → int`
+Get index by component object.
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskComBox {
-    width: 200
-    height: 100
-    componentData: someComponentData
+    comManager: comManager
+    editingComponent: currentComponent
+    currentComponent: parentComponent
+    allPages: false
 }
 ```
 
-## Related Controls
+## Related
 
-- [UniDeskComBase](/en/controls-reference/UniDeskComBase.md) - Component base
-- [UniDeskComManager](/en/controls-reference/singletons/UniDeskComManager.md) - Component manager
-
-## Related Documentation
-
-- [Plugin Development Guide](/en/custom-developing/plugin.md)
-- [Glossary](/en/glossary.md)
+- [UniDeskComboBox](./UniDeskComboBox.md) — Combo box base
+- [UniDeskComManager](./UniDeskComManager.md) — Component manager

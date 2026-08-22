@@ -3,94 +3,75 @@ title: UniDeskSettingsWindow
 editLink: true
 ---
 
-# UniDeskSettingsWindow Singleton
+# UniDeskSettingsWindow Type
 
-Settings window singleton for opening and managing the program settings window, supporting tab switching and parameter configuration.
+The settings window of Uniquenium, inheriting from `UniDeskWindow`. It organizes settings into tabs (Function, Appearance, Hotkeys, Plugins, About). Registered as a QML singleton (`pragma Singleton`), it still receives the component manager instance through the `comManager` property.
 
-| Project | Description |
-|---------|-------------|
-| Type | Singleton |
+| Control Type | Concrete Item |
+|-------------|---------------|
 | Source File | `UniDesk/Singletons/UniDeskSettingsWindow.qml` |
-| QML Import | `import UniDesk 1.0` |
+| Inherits | [UniDeskWindow](../UniDeskWindow) |
+| QML Import | `import UniDesk.Singletons 1.0` |
 
-## Using the Singleton
+## Properties
 
-```qml
-import UniDesk 1.0
+### `property var comManager`
+The component manager instance injected by `main.qml`, used to operate on components in the settings window (add/remove/preview components, etc.).
 
-// Open settings window
-UniDeskSettingsWindow.open()
+### `property var customWallpaper`
+Reference to the custom wallpaper component, used to preview wallpaper effects in the Appearance tab.
 
-// Open specific settings tab
-UniDeskSettingsWindow.open("appearance")
+### Inherited from `UniDeskWindow`
+- `width: 1000`, `height: 700`: Default window size
+- `title: qsTr("Settings")`: Window title
+- `autoDestroy: false`: Hide instead of destroy on close
+- `autoVisible: false`: Do not show on startup
 
-// Close settings window
-UniDeskSettingsWindow.close()
-```
+## Tabs
+
+| Tab | Description |
+|-----|-------------|
+| Function | Auto-start, tray behavior, main panel interaction toggles |
+| Appearance | Theme mode, accent color, font, corner radius, Acrylic effect |
+| Hotkeys | Global hotkey registration and management |
+| Plugins | Installed plugin list, enable/disable, configure, and official plugin entry |
+| About | Version info, repository links, acknowledgements, check for updates |
 
 ## Methods
 
-### `function open(tab: string = "")`
-Open the settings window. `tab` is the name of the tab to open (optional); if empty, the last viewed tab is opened.
+### `function open()`
+Show the settings window and restore the last viewed tab.
 
 ### `function close()`
-Close the settings window.
+Hide the settings window (the instance is kept alive because `autoDestroy: false`).
 
-### `function switchTab(tab: string)`
-Switch to the specified settings tab.
+### `function switchTab(index)`
+Switch to the tab at the specified index.
 
-### `function isVisible(): bool`
-Check if the settings window is currently visible.
+### `function isVisible() → bool`
+Return whether the settings window is currently visible.
 
-## Signals
-
-### `signal opened()`
-Triggered when the settings window is opened.
-
-### `signal closed()`
-Triggered when the settings window is closed.
-
-### `signal tabChanged(tab: string)`
-Triggered when the settings tab is switched.
-
-## Basic Usage
+## Example
 
 ```qml
 import UniDesk 1.0
 import UniDesk.Controls 1.0
+import UniDesk.Singletons 1.0
 
 UniDeskButton {
     text: "Open Settings"
     onClicked: UniDeskSettingsWindow.open()
 }
-
-UniDeskButton {
-    text: "Open Shortcut Settings"
-    onClicked: UniDeskSettingsWindow.open("shortcuts")
-}
-
-Connections {
-    target: UniDeskSettingsWindow
-    function onOpened() {
-        console.log("Settings window opened")
-    }
-    function onTabChanged(tab) {
-        console.log("Switched to tab:", tab)
-    }
-}
 ```
 
 ## Notes
 
-- This singleton is typically used by the tray menu, shortcuts, or other UI controls to open the settings window.
-- Custom tabs can be added through the plugin system.
+- `UniDeskSettingsWindow` inherits all capabilities of `UniDeskWindow`, including frameless rendering, Acrylic blur, auto-centering, and the info bar.
+- Since it is registered with `pragma Singleton`, it can be accessed directly by type name (e.g. `UniDeskSettingsWindow.open()`), but the `comManager` property must still be injected externally.
+- Each tab's implementation lives under `UniDesk/Singletons/SettingsViews/` (`AboutView.qml`, `AppearanceView.qml`, `FunctionView.qml`, `HotkeysView.qml`, `PluginsView.qml`).
 
-## Related Singletons
+## Related
 
-- [UniDeskSettings](/en/controls-reference/singletons/UniDeskSettings.md) - Settings read/write
-- [UniDeskGlobals](/en/controls-reference/singletons/UniDeskGlobals.md) - Global state
-
-## Related Documentation
-
-- [UniDeskWindow](/en/controls-reference/UniDeskWindow.md) - Window control
-- [Glossary](/en/glossary.md)
+- [UniDeskWindow](../UniDeskWindow.md) — Base window control
+- [UniDeskComManager](../singletons/UniDeskComManager.md) — Component manager accessed via the `comManager` property
+- [Official Plugins](../../official-plugins.md) — Official plugins entry in the Plugins tab

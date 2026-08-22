@@ -4,80 +4,62 @@ editLink: true
 ---
 
 # UniDeskMenu Type
-Menu control
 
+Popup menu control based on QtQuick `Menu`. Provides a semi-transparent acrylic background, rounded border, and fade in/out animation. Supports scrolling when content exceeds the window.
+
+| Item | Description |
+|------|-------------|
 | Control Type | Visual Control |
-|-------------|----------------|
 | Source File | `UniDesk/Controls/UniDeskMenu.qml` |
-| Inherits | QtQuick Item |
-| QML Import | `import UniDesk.Controls 1.0` |
+| Inherits | QtQuick Templates Menu |
+| QML Import | `import UniDesk 1.0` |
 
-## Introduction
+## Custom Properties
 
-UniDeskMenu is a pop-up menu control in the UniDesk library, typically used to provide contextual operations (right-click menus, dropdown menus). When combined with [UniDeskMenuItem](./UniDeskMenuItem.md) and [UniDeskMenuSeparator](./UniDeskMenuSeparator.md), a complete menu structure can be formed.
+| Property | Type | Description |
+|----------|------|-------------|
+| `comManager` | `var` | Component manager reference, calls `comManager.menuClosed()` on close |
 
-## Properties
+## Style
 
-### `property Item parentControl`
-The parent control of the menu. When the parent control is clicked, the menu will show.
+- Semi-transparent background (70% white in light / 70% black in dark)
+- 1px border, auto-adapts to light/dark themes
+- 3px corner radius
+- Scrollable content with vertical scrollbar when overflowing
 
-### `property var menuContent`
-Menu content, typically a list of controls.
+## Behavior
 
-## Methods
+- `enter` animation: fade-in (100ms)
+- `exit` animation: fade-out (100ms)
+- `closePolicy`: supports ESC key and outside click to close
+- Auto-calls `comManager.menuClosed()` on close (if `comManager` is set)
 
-### `function open()`
-Show the menu.
-
-### `function close()`
-Close the menu.
-
-### `function toggle()`
-Toggle the menu open/close state.
-
-## Signals
-
-### `signal opened()`
-Triggered when the menu is opened.
-
-### `signal closed()`
-Triggered when the menu is closed.
-
-## Basic Usage
+## Example
 
 ```qml
-import UniDesk.Controls 1.0
-
-UniDeskButton {
-    id: myBtn
-    text: "Options"
-    onClicked: menu.open()
-}
+import UniDesk 1.0
 
 UniDeskMenu {
-    id: menu
-    parentControl: myBtn
+    id: contextMenu
+    comManager: comManager
 
     UniDeskMenuItem {
-        text: "Option 1"
-        onClicked: console.log("Option 1 clicked")
+        text: "Copy"
+        onTriggered: console.log("copy")
     }
-
-    UniDeskMenuSeparator { }
-
     UniDeskMenuItem {
-        text: "Option 2"
-        onClicked: console.log("Option 2 clicked")
+        text: "Paste"
+        onTriggered: console.log("paste")
     }
+}
+
+MouseArea {
+    anchors.fill: parent
+    onClicked: contextMenu.popup(parent)
 }
 ```
 
-## Related Controls
+## Related
 
-- [UniDeskMenuItem](/en/controls-reference/UniDeskMenuItem.md) - Menu item
-- [UniDeskMenuSeparator](/en/controls-reference/UniDeskMenuSeparator.md) - Menu separator
-
-## Related Documentation
-
-- [UniDeskToolButton](/en/controls-reference/UniDeskButton.md) - Button control
-- [Glossary](/en/glossary.md) - Control vs. Component
+- [UniDeskMenuItem](./UniDeskMenuItem.md) — Menu item
+- [UniDeskMenuSeparator](./UniDeskMenuSeparator.md) — Menu separator

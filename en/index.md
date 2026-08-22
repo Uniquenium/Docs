@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Uniquenium"
   text: "Create Infinite Possibilities"
-  tagline: An open-source desktop customization tool that blends beauty and utility
+  tagline: A highly flexible open-source desktop customization tool
   image:
     light: /uq-l.png
     dark: /uq-d.png
@@ -22,58 +22,56 @@ hero:
       link: https://github.com/Uniquenium/Uniquenium
 
 features:
-  - title: Beautiful Interface
-    icon: 🎨
-    details: Modern Fluent design style with dark/light theme switching and Acrylic blur effects
-    link: /en/components-wiki/overview.md#theme-switching
-    linkText: Learn about themes
+  - title: Multi-Page Workspaces
+    icon: 🗂️
+    details: Native multi-page support with independent components, layers and names for each page, letting you build your own desktop workspaces
+    link: /en/components-wiki/overview.md#creating-pages
+    linkText: Learn about pages
 
-  - title: Rich Controls
-    icon: 🧩
-    details: Built-in UniDesk control library with 30+ elegant QML controls for building desktop interfaces
+  - title: QML at Your Fingertips
+    icon: 📝
+    details: All controls are written in QML and can be freely modified to customize appearance and behavior with zero barrier to deep customization
     link: /en/controls-reference/overview.md
-    linkText: View control library
+    linkText: Browse the control library
 
-  - title: Plugin System
-    icon: 🔌
-    details: Flexible plugin architecture supporting custom components and features for a personalized desktop experience
-    link: /en/custom-developing/plugin.md
-    linkText: Develop plugins
-
-  - title: Shortcut Support
-    icon: ⚡
-    details: Global hotkey binding for quick app launching, page switching, and operation execution
-    link: /en/components-wiki/overview.md#keyboard-shortcuts
-    linkText: Set shortcuts
-
-  - title: Visual Editing
-    icon: 📐
-    details: WYSIWYG component editor with drag-and-drop layout for easy position and property adjustment
-    link: /en/components-wiki/overview.md#component-properties
-    linkText: Start editing
-
-  - title: Template System
-    icon: 🎯
-    details: Export and import component templates to quickly reuse excellent layout designs
+  - title: Import & Export Resources
+    icon: 📦
+    details: One-click import and export of templates and plugins, with packaging and version migration to share excellent layouts across users
     link: /en/custom-developing/template.md
     linkText: Use templates
 
-  - title: Frameless Windows
-    icon: 🪟
-    details: Custom frameless window technology with blur effects and custom title bars
-    link: /en/controls-reference/UniDeskWindow.md
-    linkText: Window controls
+  - title: Rich Control Library
+    icon: 🧩
+    details: Built-in UniDesk library with 40+ self-developed QML controls covering windows, buttons, menus, charts and more
+    link: /en/controls-reference/overview.md
+    linkText: Browse the control library
 
-  - title: Cross-Platform
-    icon: 🌐
-    details: Built on the Qt framework, supporting Windows (Linux support in development)
-    link: /en/download.md
-    linkText: View system requirements
+  - title: Plugin Ecosystem
+    icon: 🔌
+    details: C++ DLL + QML plugin architecture. Install the official plugin pack, or extend new components and backends yourself
+    link: /en/official-plugins.md
+    linkText: Official plugins
+
+  - title: Dynamic Text via Expressions
+    icon: 🧮
+    details: Built-in UniDeskExpr engine. Use `%{value}` syntax to reference system data, API responses or presets in real time
+    link: /en/custom-developing/template.md
+    linkText: Learn about expressions
+
+  - title: Shortcuts & Tray
+    icon: ⚡
+    details: Global hotkeys, a persistent system tray and one-click access to the main panel — your desktop, always one keystroke away
+    link: /en/components-wiki/overview.md#keyboard-shortcuts
+    linkText: Configure shortcuts
+
+  - title: Frameless & Acrylic
+    icon: 🎨
+    details: Custom frameless windows with Acrylic blur effects and automatic light/dark theme switching to refresh your desktop
 ---
 
 ## What is Uniquenium?
 
-**Uniquenium** is an open-source desktop customization tool dedicated to providing users with a desktop extension platform that blends beauty and utility. It is built on the **C++/Qt** and **QML** technology stack, with its own UI control library **UniDesk** to make your desktop look brand new.
+**Uniquenium** is an open-source desktop customization tool dedicated to providing users with a highly flexible desktop extension platform. It is built on the **C++/Qt** and **QML** technology stack, with its own UI control library **UniDesk** to make your desktop look brand new.
 
 ### Architecture Overview
 

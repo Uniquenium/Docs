@@ -5,20 +5,30 @@ editLink: true
 
 # UniDeskImage Type
 
-Image display control, supporting loading and displaying local images, network images, and QRC resource images.
+Image display control based on QtQuick `AnimatedImage`. Supports loading local, network, and QRC resource images, with a built-in fade transition animation on image changes.
 
-| Project | Description |
-|---------|-------------|
+| Item | Description |
+|------|-------------|
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskImage.qml` |
-| Inherits | QtQuick Item |
+| Inherits | QtQuick AnimatedImage |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskImage.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskImage.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskImage.md).
-:::
+## Custom Properties
 
-## Basic Usage
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `animationEnabled` | `bool` | `true` | Enable transition animation |
+| `animationDuration` | `int` | `300` | Animation duration in milliseconds |
+
+## Behavior
+
+- Auto-plays when image is loaded (`playing = status === Image.Ready`)
+- Fade-out transition on `source` change: old image fades out, new image fades in
+- Hidden when no `source` (`opacity: source.toString() !== "" ? 1 : 0`)
+- Inherits all `AnimatedImage` properties (e.g. `fillMode`, `source`)
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
@@ -28,10 +38,11 @@ UniDeskImage {
     height: 200
     source: "qrc:/images/logo.png"
     fillMode: Image.PreserveAspectCrop
+    animationDuration: 500
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskIcon](/en/controls-reference/UniDeskIcon.md) - Icon control
-- [Glossary](/en/glossary.md)
+- [UniDeskIcon](./UniDeskIcon.md) — Icon control
+- [UniDeskFrame](./UniDeskFrame.md) — Container control

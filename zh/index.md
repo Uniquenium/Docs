@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Uniquenium"
   text: "创造无限可能"
-  tagline: 集美化与实用功能于一体的开源桌面自定义工具
+  tagline: 高度自由的开源桌面自定义工具
   image:
     light: /uq-l.png
     dark: /uq-d.png
@@ -22,58 +22,58 @@ hero:
       link: https://github.com/Uniquenium/Uniquenium
 
 features:
-  - title: 🎨 精美界面
-    icon: 🎨
-    details: 采用现代 Fluent 设计风格，支持深色/浅色主题切换，提供 Acrylic 亚克力模糊效果
-    link: /components-wiki/overview.md#主题切换
-    linkText: 了解主题设置
+  - title: 🗂️ 多页面分页
+    icon: 🗂️
+    details: 原生支持多页面分页管理，每页拥有独立组件、层级与名称，轻松构建属于自己的桌面工作台
+    link: /components-wiki/overview.md#创建页面
+    linkText: 了解分页
 
-  - title: 🧩 丰富控件
-    icon: 🧩
-    details: 内置 UniDesk 控件库，包含 30+ 种精美 QML 控件，轻松构建桌面界面
+  - title: 📝 QML 自由改写
+    icon: 📝
+    details: 所有控件均由 QML 编写，可直接修改源文件自定义外观与行为，真正做到零门槛深度定制
     link: /controls-reference/overview.md
     linkText: 查看控件库
 
-  - title: 🔌 插件系统
-    icon: 🔌
-    details: 灵活的插件架构，支持扩展自定义组件和功能，打造专属桌面体验
-    link: /custom-developing/plugin.md
-    linkText: 开发插件
+  - title: 📦 资源导入导出
+    icon: 📦
+    details: 模板、插件一键导入导出，支持打包分享与版本迁移，让优秀布局在用户之间自由流通
+    link: /custom-developing/template.md
+    linkText: 使用模板系统
 
-  - title: ⚡ 快捷键支持
+  - title: 🧩 丰富控件
+    icon: 🧩
+    details: 内置 UniDesk 控件库，包含 40+ 种自研 QML 控件，覆盖窗口、按钮、菜单、图表等常见场景
+    link: /controls-reference/overview.md
+    linkText: 查看控件库
+
+  - title: 🔌 插件生态
+    icon: 🔌
+    details: 基于 C++ DLL + QML 的插件体系，官方提供官方插件包，也支持用户自行扩展新组件与后端能力
+    link: /official-plugins.md
+    linkText: 官方插件
+
+  - title: 🧮 表达式动态文本
+    icon: 🧮
+    details: 内置 UniDeskExpr 表达式引擎，通过 `%{value}` 语法实时引用系统数据、API 响应或预设变量
+    link: /custom-developing/template.md
+    linkText: 了解表达式
+
+  - title: ⚡ 快捷键 & 托盘
     icon: ⚡
-    details: 全局热键绑定，快速启动应用、切换页面、执行操作，效率倍增
+    details: 全局热键绑定、系统托盘常驻、一键唤出主面板，桌面随叫随到
     link: /components-wiki/overview.md#快捷键设置
     linkText: 设置快捷键
 
-  - title: 📐 可视化编辑
-    icon: 📐
-    details: 所见即所得的组件编辑器，拖拽式布局，轻松调整位置和属性
-    link: /components-wiki/overview.md#组件属性编辑
-    linkText: 开始编辑
-
-  - title: 🎯 模板系统
-    icon: 🎯
-    details: 支持组件模板导出与导入，快速复用优秀布局设计
-    link: /custom-developing/template.md
-    linkText: 使用模板
-
-  - title: 🪟 无边框窗口
-    icon: 🪟
-    details: 自定义无边框窗口技术，支持窗口毛玻璃效果、自定义标题栏
+  - title: 🎨 无边框 & 亚克力
+    icon: 🎨
+    details: 自定义无边框窗口与毛玻璃亚克力效果，浅色/深色主题自动切换，让桌面焕然一新
     link: /controls-reference/UniDeskWindow.md
     linkText: 窗口控件
-
-  - title: 🌐 跨平台兼容
-    icon: 🌐
-    details: 基于 Qt 框架开发，支持 Windows 系统（Linux 支持开发中）
-    link: /download.md
-    linkText: 查看系统要求
 ---
 
 ## Uniquenium 是什么？
 
-**Uniquenium** 是一款开源的桌面自定义工具，致力于为用户提供一个集美化与实用功能于一体的桌面扩展平台。它基于 **C++/Qt** 和 **QML** 技术栈构建，拥有自己的 UI 控件库 **UniDesk**，让你的桌面焕然一新。
+**Uniquenium** 是一款开源的桌面自定义工具，致力于为用户提供一个高度自由的桌面扩展平台。它基于 **C++/Qt** 和 **QML** 技术栈构建，拥有自己的 UI 控件库 **UniDesk**，让你的桌面焕然一新。
 
 ### 架构总览
 

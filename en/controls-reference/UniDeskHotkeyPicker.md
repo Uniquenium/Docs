@@ -5,32 +5,54 @@ editLink: true
 
 # UniDeskHotkeyPicker Type
 
-Shortcut key picker control, allowing users to press a key combination in the UI to set a global or local shortcut.
+Shortcut key picker control based on `UniDeskButton`. Click to open a dialog where users can press a key combination to set a shortcut.
 
 | Project | Description |
 |---------|-------------|
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskHotkeyPicker.qml` |
-| Inherits | QtQuick Item |
+| Inherits | UniDeskButton |
 | QML Import | `import UniDesk.Controls 1.0` |
 
-::: info Documentation in Progress
-Detailed properties, methods, and examples for this control are being written. You can view the source code [UniDeskHotkeyPicker.qml](https://github.com/Uniquenium/Uniquenium/blob/main/UniDesk/Controls/UniDeskHotkeyPicker.qml) first, or help us [improve this documentation](https://github.com/Uniquenium/Docs/edit/main/en/controls-reference/UniDeskHotkeyPicker.md).
-:::
+## Custom Properties
 
-## Basic Usage
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `current` | `list<string>` | `["Ctrl", "Shift", "A"]` | Current shortcut key combination |
+| `title` | `string` | `"Activate Shortcut"` | Dialog title |
+| `message` | `string` | `"Press a key combination to change the shortcut"` | Dialog message |
+| `positiveText` | `string` | `"Save"` | Save button text |
+| `neutralText` | `string` | `"Cancel"` | Cancel button text |
+| `negativeText` | `string` | `"Reset"` | Reset button text |
+| `registered` | `bool` | `true` | Whether the shortcut is registered (shows conflict when `false`) |
+| `errorColor` | `color` | Red | Conflict error color |
+
+## Signals
+
+### `accepted()`
+Emitted when the user clicks the Save button.
+
+## Features
+
+- Click button to open `UniDeskDialog`
+- Captures keyboard input in the dialog (supports Ctrl, Shift, Alt modifiers)
+- Keys converted to strings via `keyToString()`
+- Save, Cancel, Reset operations
+- Shortcut displayed as capsule-shaped chips
+
+## Example
 
 ```qml
 import UniDesk.Controls 1.0
 
 UniDeskHotkeyPicker {
-    width: 200
-    hotkeyText: "Ctrl+Alt+U"
-    onHotkeyChanged: console.log("New shortcut:", hotkeyText)
+    current: ["Ctrl", "Shift", "S"]
+    title: "Save Shortcut"
+    onAccepted: console.log("Shortcut saved")
 }
 ```
 
-## Related Documentation
+## Related
 
-- [UniDeskSettingsWindow](/en/controls-reference/singletons/UniDeskSettingsWindow.md) - Settings window
-- [Glossary](/en/glossary.md)
+- [UniDeskDialog](./UniDeskDialog.md) — Dialog
+- [UniDeskButton](./UniDeskButton.md) — Button

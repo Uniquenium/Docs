@@ -4,32 +4,53 @@ editLink: true
 ---
 
 # UniDeskAcrylic Type
-Acrylic blur effect control
 
-| Control Type | Element |
-|-------------|---------|
-| Source File | `UniDesk/UniDeskAcrylic.qml` |
-| Inherits | [QtQuick Item](https://doc.qt.io/qt-6.8/qml-qtquick-item.html) |
+Acrylic blur effect control. Implements a Windows-style acrylic translucent effect by blurring a target area with `FastBlur`, layered with color tint, luminosity, and noise texture.
 
-## Properties
+| Item | Description |
+|------|-------------|
+| Control Type | Visual Control |
+| Source File | `UniDesk/Controls/UniDeskAcrylic.qml` |
+| Inherits | QtQuick Item |
+| QML Import | `import UniDesk.Controls 1.0` |
 
-### `property color tintColor`
-Control's tint color. Default is `Qt.rgba(1, 1, 1, 1)`.
+## Custom Properties
 
-### `property real tintOpacity`
-Opacity of the tint color. Default is `0.65`.
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tintColor` | `color` | `Qt.rgba(1, 1, 1, 1)` | Tint color |
+| `tintOpacity` | `real` | `0.65` | Tint opacity |
+| `luminosity` | `real` | `0.01` | Brightness overlay |
+| `noiseOpacity` | `real` | `0.02` | Noise texture opacity |
+| `target` | `var` | — | Target Item for acrylic rendering |
+| `blurRadius` | `int` | `32` | Blur radius |
+| `targetRect` | `rect` | Item bounds | Render rect range |
+| `cornerRadius` | `int` | `5` | Corner radius |
 
-### `property real luminousity`
-Brightness of the effect. Default is `0.01`.
+## Implementation
 
-### `property real noiseOpacity`
-Noise opacity. Default is `0.02`.
+1. Uses `ShaderEffectSource` to capture the target area
+2. Applies `FastBlur` for Gaussian blur
+3. Overlays luminosity, tint, and noise layers
 
-### `property var target`
-Target for the acrylic blur effect rendering.
+## Example
 
-### `property int blurRadius`
-Blur radius of the effect. Default is `32`.
+```qml
+import UniDesk 1.0
 
-### `property rect target`
-Rendering rect range for the acrylic blur effect. Default covers the entire area.
+UniDeskAcrylic {
+    anchors.fill: parent
+    target: parent
+    blurRadius: 32
+    cornerRadius: 8
+    tintColor: UniDeskGlobals.isLight ? Qt.rgba(1,1,1,1) : Qt.rgba(0,0,0,1)
+    tintOpacity: 0.65
+    luminosity: 0.01
+    noiseOpacity: 0.02
+}
+```
+
+## Related
+
+- [UniDeskWindow](./UniDeskWindow.md) — Window using acrylic effects
+- [UniDeskFrame](./UniDeskFrame.md) — Frame container
