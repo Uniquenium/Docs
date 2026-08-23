@@ -95,4 +95,4 @@ UniDeskComBase {
 
 - [UniDeskComRectEditor](./UniDeskComRectEditor.md) — 矩形编辑器
 - [UniDeskComBasicOptions](./UniDeskComBasicOptions.md) — 基础属性面板
-- [UniDeskComManager](../../cpp-ext/UniDeskComManager.md) — 组件管理器
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — 组件管理器

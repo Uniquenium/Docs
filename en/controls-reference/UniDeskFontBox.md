@@ -12,7 +12,7 @@ Font selection combo box based on `UniDeskComboBox`. Lists all available fonts i
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskFontBox.qml` |
 | Inherits | UniDeskComboBox |
-| QML Import | `import UniDesk 1.0` |
+| QML Import | `import UniDesk.Controls 1.0` |
 
 ## Custom Properties
 
@@ -31,7 +31,7 @@ Font selection combo box based on `UniDeskComboBox`. Lists all available fonts i
 ## Example
 
 ```qml
-import UniDesk 1.0
+import UniDesk.Controls 1.0
 
 UniDeskFontBox {
     width: 300

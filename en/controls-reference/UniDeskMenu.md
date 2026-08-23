@@ -12,7 +12,7 @@ Popup menu control based on QtQuick `Menu`. Provides a semi-transparent acrylic 
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskMenu.qml` |
 | Inherits | QtQuick Templates Menu |
-| QML Import | `import UniDesk 1.0` |
+| QML Import | `import UniDesk.Controls 1.0` |
 
 ## Custom Properties
 
@@ -37,7 +37,7 @@ Popup menu control based on QtQuick `Menu`. Provides a semi-transparent acrylic 
 ## Example
 
 ```qml
-import UniDesk 1.0
+import UniDesk.Controls 1.0
 
 UniDeskMenu {
     id: contextMenu

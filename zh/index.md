@@ -64,11 +64,11 @@ features:
     link: /components-wiki/overview.md#快捷键设置
     linkText: 设置快捷键
 
-  - title: 🎨 无边框 & 亚克力
-    icon: 🎨
-    details: 自定义无边框窗口与毛玻璃亚克力效果，浅色/深色主题自动切换，让桌面焕然一新
-    link: /controls-reference/UniDeskWindow.md
-    linkText: 窗口控件
+  - title: 🌐 跨平台支持
+    icon: 🌐
+    details: 基于 Qt 框架构建，原生支持 Windows 与 Linux 等多平台，一次开发多端部署，桌面自由不受限
+    link: /download.md
+    linkText: 查看支持的平台
 ---
 
 ## Uniquenium 是什么？

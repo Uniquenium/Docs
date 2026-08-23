@@ -40,7 +40,7 @@ Emitted when a valid path is confirmed (via Enter key or dialog selection).
 
 - Path validation on Enter: checks local file existence or URL validity
 - Empty path allowed
-- Invalid path triggers `parentWindow.showError("路径无效")`
+- Invalid path triggers `parentWindow.showError("Invalid path")`
 - Browse button opens `FileDialog` or `FolderDialog` based on `mode`
 
 ## Example

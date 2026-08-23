@@ -44,7 +44,13 @@ Download descriptions:
 - `Uniquenium-Portable-*.zip` - Windows portable version, extract and use
 - `Source code (zip)` / `Source code (tar.gz)` - Source code package
 
-### Method 2: Compile from Source
+### Method 2: SourceForge Mirror
+
+If GitHub is slow to access in your region, you can use the SourceForge mirror:
+
+[📥 Go to SourceForge](https://sourceforge.net/projects/uniquenium/)
+
+### Method 3: Compile from Source
 
 If you want to use the latest development version or participate in development, you can compile from source:
 
@@ -66,7 +72,7 @@ cmake --build build --config Release
 ./build/Uniquenium0
 ```
 
-### Method 3: Use DeepWiki Docs
+### Method 4: Use DeepWiki Docs
 
 You can also access interactive documentation and code explanations through DeepWiki:
 

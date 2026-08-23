@@ -12,7 +12,7 @@ Menu separator control based on QtQuick `Rectangle`. Provides a thin line betwee
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskMenuSeparator.qml` |
 | Inherits | QtQuick Rectangle |
-| QML Import | `import UniDesk 1.0` |
+| QML Import | `import UniDesk.Controls 1.0` |
 
 ## Style
 
@@ -23,7 +23,7 @@ Menu separator control based on QtQuick `Rectangle`. Provides a thin line betwee
 ## Example
 
 ```qml
-import UniDesk 1.0
+import UniDesk.Controls 1.0
 
 UniDeskMenu {
     UniDeskMenuItem { text: "Cut" }

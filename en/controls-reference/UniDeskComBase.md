@@ -15,7 +15,7 @@ Component base control. All editable components in the visual editor inherit fro
 | QML Import | `import UniDesk.Controls 1.0` |
 
 ::: warning Editor Only
-This control is primarily intended for internal use by the Uniquenium visual editor.普通开发者在构建自定义组件时可参考其实现方式。
+This control is primarily intended for internal use by the Uniquenium visual editor. Regular developers can refer to its implementation when building custom components.
 :::
 
 ## Custom Properties
@@ -95,4 +95,4 @@ UniDeskComBase {
 
 - [UniDeskComRectEditor](./UniDeskComRectEditor.md) — Rectangle editor
 - [UniDeskComBasicOptions](./UniDeskComBasicOptions.md) — Basic property panel
-- [UniDeskComManager](../../cpp-ext/UniDeskComManager.md) — Component manager
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — Component manager

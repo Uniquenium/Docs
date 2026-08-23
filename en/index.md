@@ -64,9 +64,11 @@ features:
     link: /en/components-wiki/overview.md#keyboard-shortcuts
     linkText: Configure shortcuts
 
-  - title: Frameless & Acrylic
-    icon: 🎨
-    details: Custom frameless windows with Acrylic blur effects and automatic light/dark theme switching to refresh your desktop
+  - title: Cross-Platform Support
+    icon: 🌐
+    details: Built on the Qt framework with native support for Windows and Linux. Write once, deploy across platforms — your freedom is not limited
+    link: /en/download.md
+    linkText: View supported platforms
 ---
 
 ## What is Uniquenium?

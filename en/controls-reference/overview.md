@@ -292,7 +292,6 @@ View detailed API documentation for each control by functional category:
 ### Text & Display
 - [UniDeskText](/en/controls-reference/UniDeskText.md) - Text label
 - [UniDeskImage](/en/controls-reference/UniDeskImage.md) - Image display
-- [UniDeskChart](/en/controls-reference/UniDeskChart.md) - Data chart
 - [UniDeskTooltip](/en/controls-reference/UniDeskTooltip.md) - Floating tooltip
 - [UniDeskInfoBar](/en/controls-reference/UniDeskInfoBar.md) - Info bar
 - [UniDeskMessageBox](/en/controls-reference/UniDeskMessageBox.md) - Message dialog

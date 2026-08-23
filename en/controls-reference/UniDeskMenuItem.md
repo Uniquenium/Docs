@@ -12,7 +12,7 @@ Menu item control based on QtQuick `MenuItem`. Supports icons, submenu arrows, c
 | Control Type | Visual Control |
 | Source File | `UniDesk/Controls/UniDeskMenuItem.qml` |
 | Inherits | QtQuick Templates MenuItem |
-| QML Import | `import UniDesk 1.0` |
+| QML Import | `import UniDesk.Controls 1.0` |
 
 ## Custom Properties
 
@@ -35,7 +35,7 @@ Menu item control based on QtQuick `MenuItem`. Supports icons, submenu arrows, c
 ## Example
 
 ```qml
-import UniDesk 1.0
+import UniDesk.Controls 1.0
 
 UniDeskMenu {
     UniDeskMenuItem {

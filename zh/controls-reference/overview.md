@@ -292,7 +292,6 @@ property color finalColor: UniDeskTools.switchColor(
 ### 文本与显示
 - [UniDeskText](/controls-reference/UniDeskText.md) - 文本标签
 - [UniDeskImage](/controls-reference/UniDeskImage.md) - 图片显示
-- [UniDeskChart](/controls-reference/UniDeskChart.md) - 数据图表
 - [UniDeskTooltip](/controls-reference/UniDeskTooltip.md) - 浮动提示
 - [UniDeskInfoBar](/controls-reference/UniDeskInfoBar.md) - 信息提示条
 - [UniDeskMessageBox](/controls-reference/UniDeskMessageBox.md) - 消息弹框

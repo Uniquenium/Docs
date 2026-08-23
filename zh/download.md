@@ -45,7 +45,13 @@ editLink: true
 - `Uniquenium-Portable-*.zip` - Windows 便携版，解压即可使用
 - `Source code (zip)` / `Source code (tar.gz)` - 源代码包
 
-### 方式二：从源码编译
+### 方式二：SourceForge 镜像
+
+如果你在国内访问 GitHub 速度较慢，可以使用 SourceForge 镜像站下载：
+
+[📥 前往 SourceForge 下载](https://sourceforge.net/projects/uniquenium/)
+
+### 方式三：从源码编译
 
 如果你希望使用最新的开发版本或参与开发，可以从源码编译：
 
@@ -67,7 +73,7 @@ cmake --build build --config Release
 ./build/Uniquenium0
 ```
 
-### 方式三：使用 DeepWiki 文档
+### 方式四：使用 DeepWiki 文档
 
 你还可以通过 DeepWiki 获取交互式文档和代码说明：
 

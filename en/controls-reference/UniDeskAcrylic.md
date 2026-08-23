@@ -36,7 +36,7 @@ Acrylic blur effect control. Implements a Windows-style acrylic translucent effe
 ## Example
 
 ```qml
-import UniDesk 1.0
+import UniDesk.Controls 1.0
 
 UniDeskAcrylic {
     anchors.fill: parent
