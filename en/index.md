@@ -25,7 +25,7 @@ features:
   - title: Multi-Page Workspaces
     icon: 🗂️
     details: Native multi-page support with independent components, layers and names for each page, letting you build your own desktop workspaces
-    link: /en/components-wiki/overview.md#creating-pages
+    link: /en/component-encyclopedia/overview.md
     linkText: Learn about pages
 
   - title: QML at Your Fingertips
@@ -61,7 +61,7 @@ features:
   - title: Shortcuts & Tray
     icon: ⚡
     details: Global hotkeys, a persistent system tray and one-click access to the main panel — your desktop, always one keystroke away
-    link: /en/components-wiki/overview.md#keyboard-shortcuts
+    link: /en/controls-reference/singletons/UniDeskComManager.md
     linkText: Configure shortcuts
 
   - title: Cross-Platform Support

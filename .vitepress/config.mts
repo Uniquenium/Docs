@@ -32,7 +32,6 @@ export default withMermaid(defineConfig({
                     { 
                         text: 'User Guide', 
                         items: [
-                            { text: 'Components Overview', link: '/en/components-wiki/overview.md' },
                             { text: 'Component Encyclopedia', link: '/en/component-encyclopedia/overview.md' },
                             { text: 'Glossary', link: '/en/glossary.md' },
                             { text: 'FAQ', link: '/en/faq.md' },
@@ -103,34 +102,6 @@ export default withMermaid(defineConfig({
                             items: [
                                 { text: 'Download Uniquenium', link: '/en/download.md' },
                                 { text: 'Installation Guide', link: '/en/quick-start/install.md' },
-                            ]
-                        }
-                    ],
-                    '/en/components-wiki/': [
-                        {
-                            text: 'User Guide',
-                            items: [
-                                { text: 'Components Overview', link: '/en/components-wiki/overview.md' },
-                                { text: 'Glossary', link: '/en/glossary.md' },
-                            ]
-                        },
-                        {
-                            text: 'Basic Operations',
-                            items: [
-                                { text: 'Interface', link: '/en/components-wiki/overview.md#interface' },
-                                { text: 'Creating Pages', link: '/en/components-wiki/overview.md#creating-pages' },
-                                { text: 'Adding Components', link: '/en/components-wiki/overview.md#adding-components' },
-                                { text: 'Component Properties', link: '/en/components-wiki/overview.md#component-properties' },
-                            ]
-                        },
-                        {
-                            text: 'Advanced Features',
-                            items: [
-                                { text: 'Keyboard Shortcuts', link: '/en/components-wiki/overview.md#keyboard-shortcuts' },
-                                { text: 'Theme Switching', link: '/en/components-wiki/overview.md#theme-switching' },
-                                { text: 'Using Templates', link: '/en/custom-developing/template.md' },
-                                { text: 'Plugin Development', link: '/en/custom-developing/plugin.md' },
-                                { text: 'Custom Cursors', link: '/en/custom-developing/cursor-style.md' },
                             ]
                         }
                     ],
@@ -308,7 +279,6 @@ export default withMermaid(defineConfig({
                     { 
                         text: '使用指南', 
                         items: [
-                            { text: '组件百科概览', link: '/components-wiki/overview.md' },
                             { text: '组件百科', link: '/component-encyclopedia/overview.md' },
                             { text: '术语表', link: '/glossary.md' },
                             { text: '常见问题 FAQ', link: '/faq.md' },
@@ -379,34 +349,6 @@ export default withMermaid(defineConfig({
                             items: [
                                 { text: '下载 Uniquenium', link: '/download.md' },
                                 { text: '安装指南', link: '/quick-start/install.md' },
-                            ]
-                        }
-                    ],
-                    '/components-wiki/': [
-                        {
-                            text: '使用指南',
-                            items: [
-                                { text: '组件百科概览', link: '/components-wiki/overview.md' },
-                                { text: '术语表', link: '/glossary.md' },
-                            ]
-                        },
-                        {
-                            text: '基础操作',
-                            items: [
-                                { text: '界面介绍', link: '/components-wiki/overview.md#界面介绍' },
-                                { text: '创建页面', link: '/components-wiki/overview.md#创建页面' },
-                                { text: '添加组件', link: '/components-wiki/overview.md#添加组件' },
-                                { text: '组件属性编辑', link: '/components-wiki/overview.md#组件属性编辑' },
-                            ]
-                        },
-                        {
-                            text: '高级功能',
-                            items: [
-                                { text: '快捷键设置', link: '/components-wiki/overview.md#快捷键设置' },
-                                { text: '主题切换', link: '/components-wiki/overview.md#主题切换' },
-                                { text: '模板使用', link: '/custom-developing/template.md' },
-                                { text: '插件开发', link: '/custom-developing/plugin.md' },
-                                { text: '自定义光标样式', link: '/custom-developing/cursor-style.md' },
                             ]
                         }
                     ],

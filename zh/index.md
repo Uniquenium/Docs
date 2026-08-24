@@ -25,7 +25,7 @@ features:
   - title: 🗂️ 多页面分页
     icon: 🗂️
     details: 原生支持多页面分页管理，每页拥有独立组件、层级与名称，轻松构建属于自己的桌面工作台
-    link: /components-wiki/overview.md#创建页面
+    link: /component-encyclopedia/overview.md
     linkText: 了解分页
 
   - title: 📝 QML 自由改写
@@ -61,7 +61,7 @@ features:
   - title: ⚡ 快捷键 & 托盘
     icon: ⚡
     details: 全局热键绑定、系统托盘常驻、一键唤出主面板，桌面随叫随到
-    link: /components-wiki/overview.md#快捷键设置
+    link: /controls-reference/singletons/UniDeskComManager.md
     linkText: 设置快捷键
 
   - title: 🌐 跨平台支持

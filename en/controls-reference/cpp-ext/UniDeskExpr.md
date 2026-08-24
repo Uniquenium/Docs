@@ -17,14 +17,19 @@ Expression engine singleton that supports `%variable` syntax for system data ref
 ## Properties
 
 ### `readonly property SystemStats systemStats`
-Cached system stats (CPU, memory, network, battery), updated every second by an internal timer. The `SystemStats` struct contains:
-- `cpu.usagePercent` — CPU usage
+Cached system stats, updated every second by an internal timer. The `SystemStats` struct contains:
+- `cpu.usagePercent` / `cpu.temperature` — CPU usage and temperature
+- `cpu.name` / `cpu.physicalCores` / `cpu.logicalCores` / `cpu.maxClockMHz` — CPU model and specs
+- `gpu.name` / `gpu.usagePercent` / `gpu.vramTotal` / `gpu.vramUsed` / `gpu.temperature` — GPU info
 - `mem.virtmemTotal` / `mem.virtmemUsed` / `mem.virtmemPercent` — Physical memory
 - `mem.swapmemTotal` / `mem.swapmemUsed` / `mem.swapmemPercent` — Swap memory
 - `net.bytesSend` / `net.bytesRecv` — Total network traffic
 - `net.bytesSendPerSec` / `net.bytesRecvPerSec` — Network rate per second
 - `net.dropPercent` — Packet drop rate
 - `bat.batteryPercent` / `bat.charging` / `bat.remainMinutes` — Battery info
+- `disk.totalSpace` / `disk.freeSpace` / `disk.usagePercent` — Disk info
+- `sysInfo.uptimeSeconds` / `sysInfo.hostname` / `sysInfo.osName` — System info
+- `sysInfo.screenWidth` / `sysInfo.screenHeight` — Screen resolution
 
 ## Methods
 
@@ -79,6 +84,20 @@ All `%variable` tokens are matched and replaced directly via `QString::replace`,
 | Variable | Description | Type |
 |----------|-------------|------|
 | `%cpuPercent` | CPU usage | double (%) |
+| `%cpuTemp` | CPU temperature | double (°C) |
+| `%cpuName` | CPU model name | string |
+| `%cpuCores` | CPU logical core count (threads) | int |
+| `%cpuMaxClock` | CPU max clock speed | double (MHz) |
+
+### GPU
+
+| Variable | Description | Type |
+|----------|-------------|------|
+| `%gpuUsagePercent` | GPU usage | double (%) |
+| `%gpuVramTotal` | GPU total VRAM | uint64 (bytes) |
+| `%gpuVramUsed` | GPU used VRAM | uint64 (bytes) |
+| `%gpuTemp` | GPU temperature | double (°C) |
+| `%gpuName` | GPU model name | string |
 
 ### Memory
 
@@ -112,6 +131,24 @@ All `%variable` tokens are matched and replaced directly via `QString::replace`,
 | `%bleftmins` | Minutes remaining (UNLIMITED when charging) | string |
 | `%blefthoursr` | Hours remaining (excluding days) | string |
 | `%bleftminsr` | Minutes remaining (excluding hours) | string |
+
+### Disk
+
+| Variable | Description | Type |
+|----------|-------------|------|
+| `%diskTotal` | System drive total space | uint64 (bytes) |
+| `%diskFree` | System drive free space | uint64 (bytes) |
+| `%diskPercent` | System drive usage | double (%) |
+
+### System
+
+| Variable | Description | Type |
+|----------|-------------|------|
+| `%uptime` | System uptime | quint64 (seconds) |
+| `%hostname` | Host name | string |
+| `%osName` | Operating system name | string |
+| `%screenWidth` | Primary screen width | int (pixels) |
+| `%screenHeight` | Primary screen height | int (pixels) |
 
 ### Date & Time
 
@@ -174,6 +211,12 @@ Supports:
 // Percentage calculation
 "%{%virtmemUsed/%virtmemTotal*100}%"
 
+// CPU temperature to Fahrenheit
+"%{%cpuTemp * 9 / 5 + 32}°F"
+
+// GPU VRAM usage percentage
+"%{%gpuVramUsed / %gpuVramTotal * 100}%"
+
 // Using preset variables (no % prefix)
 UniDeskExpr.convertStr("%{price * count}", { "price": 9.9, "count": 3 })
 // → "29.7"
@@ -190,11 +233,23 @@ import UniDesk 1.0
 import UniDesk.Controls 1.0
 
 UDCText {
-    textContent: "CPU: %cpuPercent%  Memory: %virtmemPercent%  Battery: %bpercent%"
+    textContent: "CPU: %cpuPercent%  GPU: %gpuUsagePercent%  Memory: %virtmemPercent%"
 }
 
 UDCText {
-    textContent: "Network: %{%bytesRecvPerSec/1048576} MB/s"
+    textContent: "CPU Temp: %cpuTemp°C  GPU Temp: %gpuTemp°C"
+}
+
+UDCText {
+    textContent: "GPU: %gpuName  VRAM: %{%gpuVramUsed/1048576}MB"
+}
+
+UDCText {
+    textContent: "Network: %{%bytesRecvPerSec/1048576} MB/s  Disk: %diskPercent%"
+}
+
+UDCText {
+    textContent: "%osName | %hostname | Uptime: %uptime seconds"
 }
 ```
 
@@ -205,6 +260,7 @@ UDCText {
 - `%{}` expressions support nested parentheses, using a bracket-counting algorithm to find matching closing brackets.
 - Unmatched `%variable` or mismatched `%{}` brackets are preserved as-is.
 - `%variable` substitution happens before `%{}` evaluation, so system variables inside `%{}` are already replaced with their numeric values.
+- Temperature variables may return -1 (unavailable) on some devices; use conditional checks in UI to handle this.
 
 ## Related
 

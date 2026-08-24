@@ -17,14 +17,19 @@ editLink: true
 ## 属性
 
 ### `readonly property SystemStats systemStats`
-缓存的系统统计数据（CPU、内存、网络、电池），由内部定时器每秒更新一次。`SystemStats` 结构体包含以下成员：
-- `cpu.usagePercent` — CPU 使用率
+缓存的系统统计数据，由内部定时器每秒更新一次。`SystemStats` 结构体包含以下成员：
+- `cpu.usagePercent` / `cpu.temperature` — CPU 使用率与温度
+- `cpu.name` / `cpu.physicalCores` / `cpu.logicalCores` / `cpu.maxClockMHz` — CPU 型号与规格
+- `gpu.name` / `gpu.usagePercent` / `gpu.vramTotal` / `gpu.vramUsed` / `gpu.temperature` — GPU 信息
 - `mem.virtmemTotal` / `mem.virtmemUsed` / `mem.virtmemPercent` — 物理内存
 - `mem.swapmemTotal` / `mem.swapmemUsed` / `mem.swapmemPercent` — 交换内存
 - `net.bytesSend` / `net.bytesRecv` — 累计网络流量
 - `net.bytesSendPerSec` / `net.bytesRecvPerSec` — 每秒网络速率
 - `net.dropPercent` — 丢包率
 - `bat.batteryPercent` / `bat.charging` / `bat.remainMinutes` — 电池信息
+- `disk.totalSpace` / `disk.freeSpace` / `disk.usagePercent` — 磁盘信息
+- `sysInfo.uptimeSeconds` / `sysInfo.hostname` / `sysInfo.osName` — 系统信息
+- `sysInfo.screenWidth` / `sysInfo.screenHeight` — 屏幕分辨率
 
 ## 方法
 
@@ -79,6 +84,20 @@ var value = UniDeskExpr.evalResponse(
 | 变量 | 说明 | 类型 |
 |------|------|------|
 | `%cpuPercent` | CPU 使用率 | double (%) |
+| `%cpuTemp` | CPU 温度 | double (°C) |
+| `%cpuName` | CPU 型号名称 | string |
+| `%cpuCores` | CPU 逻辑核心数（线程数） | int |
+| `%cpuMaxClock` | CPU 最大主频 | double (MHz) |
+
+### GPU
+
+| 变量 | 说明 | 类型 |
+|------|------|------|
+| `%gpuUsagePercent` | GPU 使用率 | double (%) |
+| `%gpuVramTotal` | GPU 显存总大小 | uint64 (字节) |
+| `%gpuVramUsed` | GPU 已用显存 | uint64 (字节) |
+| `%gpuTemp` | GPU 温度 | double (°C) |
+| `%gpuName` | GPU 型号名称 | string |
 
 ### 内存
 
@@ -112,6 +131,24 @@ var value = UniDeskExpr.evalResponse(
 | `%bleftmins` | 剩余分钟数（充电时显示 UNLIMITED） | string |
 | `%blefthoursr` | 剩余小时数（不含天数） | string |
 | `%bleftminsr` | 剩余分钟数（不含小时） | string |
+
+### 磁盘
+
+| 变量 | 说明 | 类型 |
+|------|------|------|
+| `%diskTotal` | 系统盘总空间 | uint64 (字节) |
+| `%diskFree` | 系统盘剩余空间 | uint64 (字节) |
+| `%diskPercent` | 系统盘使用率 | double (%) |
+
+### 系统
+
+| 变量 | 说明 | 类型 |
+|------|------|------|
+| `%uptime` | 系统运行时间 | quint64 (秒) |
+| `%hostname` | 主机名 | string |
+| `%osName` | 操作系统名称 | string |
+| `%screenWidth` | 主屏宽度 | int (像素) |
+| `%screenHeight` | 主屏高度 | int (像素) |
 
 ### 日期与时间
 
@@ -174,6 +211,12 @@ var value = UniDeskExpr.evalResponse(
 // 百分比计算
 "%{%virtmemUsed/%virtmemTotal*100}%"
 
+// CPU 温度转华氏度
+"%{%cpuTemp * 9 / 5 + 32}°F"
+
+// GPU 显存使用率
+"%{%gpuVramUsed / %gpuVramTotal * 100}%"
+
 // 使用预设变量（无需 % 前缀）
 UniDeskExpr.convertStr("%{price * count}", { "price": 9.9, "count": 3 })
 // → "29.7"
@@ -190,11 +233,23 @@ import UniDesk 1.0
 import UniDesk.Controls 1.0
 
 UDCText {
-    textContent: "CPU: %cpuPercent%  内存: %virtmemPercent%  电量: %bpercent%"
+    textContent: "CPU: %cpuPercent%  GPU: %gpuUsagePercent%  内存: %virtmemPercent%"
 }
 
 UDCText {
-    textContent: "网速: %{%bytesRecvPerSec/1048576} MB/s"
+    textContent: "CPU温度: %cpuTemp°C  GPU温度: %gpuTemp°C"
+}
+
+UDCText {
+    textContent: "GPU: %gpuName  VRAM: %{%gpuVramUsed/1048576}MB"
+}
+
+UDCText {
+    textContent: "网速: %{%bytesRecvPerSec/1048576} MB/s  磁盘: %diskPercent%"
+}
+
+UDCText {
+    textContent: "%osName | %hostname | 运行: %uptime秒"
 }
 ```
 
@@ -205,6 +260,7 @@ UDCText {
 - `%{}` 表达式支持括号嵌套，使用括号计数法找到匹配的右括号。
 - 未匹配的 `%变量` 或 `%{}` 括号不匹配时，会原样保留。
 - `%变量` 替换在 `%{}` 求值之前执行，因此 `%{}` 内部的系统变量也会被替换为实际数值。
+- 温度变量在部分设备上可能返回 -1（不可用），建议在 UI 中做条件判断显示。
 
 ## 相关文档
 
