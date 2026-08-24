@@ -62,5 +62,5 @@ UniDeskComRectEditor {
 
 ## 相关文档
 
-- [UniDeskComManager](./UniDeskComManager.md) — 组件管理器
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — 组件管理器
 - [UniDeskWindow](./UniDeskWindow.md) — 窗口

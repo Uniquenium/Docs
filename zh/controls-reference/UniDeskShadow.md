@@ -55,4 +55,4 @@ Rectangle {
 ## 相关文档
 
 - [UniDeskFrame](./UniDeskFrame.md) — 框架容器
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — 字体样式
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — 字体样式

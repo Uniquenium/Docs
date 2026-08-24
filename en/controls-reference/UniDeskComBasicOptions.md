@@ -61,6 +61,6 @@ UniDeskComBasicOptions {
 
 ## Related
 
-- [UniDeskComManager](./UniDeskComManager.md) — Component manager
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — Component manager
 - [UniDeskPosSelector](./UniDeskPosSelector.md) — Position selector
 - [UniDeskSizeSelector](./UniDeskSizeSelector.md) — Size selector

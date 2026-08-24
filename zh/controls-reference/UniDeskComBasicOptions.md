@@ -61,6 +61,6 @@ UniDeskComBasicOptions {
 
 ## 相关文档
 
-- [UniDeskComManager](./UniDeskComManager.md) — 组件管理器
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — 组件管理器
 - [UniDeskPosSelector](./UniDeskPosSelector.md) — 位置选择器
 - [UniDeskSizeSelector](./UniDeskSizeSelector.md) — 尺寸选择器

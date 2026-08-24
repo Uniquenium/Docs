@@ -50,4 +50,4 @@ UniDeskButton {
 ## 相关文档
 
 - [UniDeskInfoBar](./UniDeskInfoBar.md) — 信息提示条
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — 字体样式
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — 字体样式

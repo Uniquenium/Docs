@@ -62,5 +62,5 @@ UniDeskComRectEditor {
 
 ## Related
 
-- [UniDeskComManager](./UniDeskComManager.md) — Component manager
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — Component manager
 - [UniDeskWindow](./UniDeskWindow.md) — Window

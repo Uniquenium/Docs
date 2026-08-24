@@ -455,5 +455,5 @@ Item {
 ## Related References
 
 - [Plugin Development Guide](/custom-developing/plugin.md): In plugins, you can dynamically switch cursors via `UniDeskCursorManager`
-- [UniDeskTools Singleton](/controls-reference/singletons/UniDeskTools.md): Provides utility methods such as `cursorPosition`
-- [UniDeskGlobals Singleton](/controls-reference/singletons/UniDeskGlobals.md): Query the current theme mode
+- [UniDeskTools Singleton](../controls-reference/cpp-ext/UniDeskTools.md): Provides utility methods such as `cursorPosition`
+- [UniDeskGlobals Singleton](../controls-reference/cpp-ext/UniDeskGlobals.md): Query the current theme mode

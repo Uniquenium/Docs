@@ -61,4 +61,4 @@ UniDeskComBox {
 ## 相关文档
 
 - [UniDeskComboBox](./UniDeskComboBox.md) — 下拉选择框基类
-- [UniDeskComManager](./UniDeskComManager.md) — 组件管理器
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — 组件管理器

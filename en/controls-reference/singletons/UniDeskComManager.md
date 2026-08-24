@@ -166,7 +166,5 @@ UniDeskSettingsWindow {
 
 ## Related
 
-- [UniDeskObject](../UniDeskObject) — The base type for all interactive items
-- [UniDeskComBase](../UniDeskComBase) — Base type for all desktop components, provides the `comManager` property by default
-- [UniDeskComWindow](../singletons/UniDeskComWindow.md) — The component management window
-- [UniDeskPageWindow](../singletons/UniDeskPageWindow.md) — The page management window
+- [UniDeskObject](../UniDeskObject.md) — The base type for all interactive items
+- [UniDeskComBase](../UniDeskComBase.md) — Base type for all desktop components, provides the `comManager` property by default

@@ -1152,6 +1152,6 @@ The three have different naming rules and purposes:
 ## Related References
 
 - [UniDeskComBase Control](/controls-reference/UniDeskComBase.md): Component base class API documentation
-- [UniDeskSettings Singleton](/controls-reference/singletons/UniDeskSettings.md): Settings storage API
+- [UniDeskSettings Singleton](../controls-reference/cpp-ext/UniDeskSettings.md): Settings storage API
 - [Template System](/custom-developing/template.md): Template development guide
 - [Custom Cursor](/custom-developing/cursor-style.md): Using custom cursors in plugins

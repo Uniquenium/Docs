@@ -72,7 +72,7 @@ Some plugins require additional configuration. Taking the Weather plugin as an e
 
 ## Developing Plugins
 
-If you want to develop your own plugins, refer to the [Plugin Development Guide](/en/custom-developing/plugin.md) and [UniDeskPluginInterface](/en/controls-reference/cpp-ext/UniDeskPluginInterface.md).
+If you want to develop your own plugins, refer to the [Plugin Development Guide](./custom-developing/plugin.md) and [UniDeskPluginInterface](./controls-reference/cpp-ext/UniDeskPluginInterface.md).
 
 ## Notes
 

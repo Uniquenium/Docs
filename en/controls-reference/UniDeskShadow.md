@@ -55,4 +55,4 @@ Rectangle {
 ## Related
 
 - [UniDeskFrame](./UniDeskFrame.md) — Frame container
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — Text style
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — Text style

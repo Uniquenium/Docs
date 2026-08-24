@@ -72,5 +72,4 @@ Component.onCompleted: {
 
 ## 相关文档
 
-- [UniDeskThemeManager](./UniDeskThemeManager.md) — 主题切换实现
 - [UniDeskSettings](./UniDeskSettings.md) — 用户设置持久化

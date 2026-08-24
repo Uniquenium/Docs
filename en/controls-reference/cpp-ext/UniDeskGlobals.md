@@ -72,5 +72,4 @@ Component.onCompleted: {
 
 ## Related
 
-- [UniDeskThemeManager](./UniDeskThemeManager.md) — Theme switching implementation
 - [UniDeskSettings](./UniDeskSettings.md) — User settings persistence

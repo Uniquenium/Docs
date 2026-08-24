@@ -455,5 +455,5 @@ Item {
 ## 相关参考
 
 - [插件开发指南](/custom-developing/plugin.md)：插件中可通过 `UniDeskCursorManager` 动态切换光标
-- [UniDeskTools 单例](/controls-reference/singletons/UniDeskTools.md)：提供 `cursorPosition` 等工具方法
-- [UniDeskGlobals 单例](/controls-reference/singletons/UniDeskGlobals.md)：查询当前主题模式
+- [UniDeskTools 单例](../controls-reference/cpp-ext/UniDeskTools.md)：提供 `cursorPosition` 等工具方法
+- [UniDeskGlobals 单例](../controls-reference/cpp-ext/UniDeskGlobals.md)：查询当前主题模式

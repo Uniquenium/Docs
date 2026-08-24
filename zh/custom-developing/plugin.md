@@ -1151,6 +1151,6 @@ deploy.bat "build\Qt_MSVC2022_64bit-Release\temp\bin"
 ## 相关参考
 
 - [UniDeskComBase 控件](/controls-reference/UniDeskComBase.md)：组件基类 API 文档
-- [UniDeskSettings 单例](/controls-reference/singletons/UniDeskSettings.md)：设置存储 API
+- [UniDeskSettings 单例](../controls-reference/cpp-ext/UniDeskSettings.md)：设置存储 API
 - [模板系统](/custom-developing/template.md)：模板开发指南
 - [自定义光标](/custom-developing/cursor-style.md)：在插件中使用自定义光标

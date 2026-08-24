@@ -43,4 +43,4 @@ UniDeskFontBox {
 ## 相关文档
 
 - [UniDeskComboBox](./UniDeskComboBox.md) — 下拉选择框基类
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — 字体样式
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — 字体样式

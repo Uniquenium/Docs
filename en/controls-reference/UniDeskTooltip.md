@@ -50,4 +50,4 @@ UniDeskButton {
 ## Related
 
 - [UniDeskInfoBar](./UniDeskInfoBar.md) — Info bar
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — Text style
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — Text style

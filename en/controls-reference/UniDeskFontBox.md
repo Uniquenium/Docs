@@ -43,4 +43,4 @@ UniDeskFontBox {
 ## Related
 
 - [UniDeskComboBox](./UniDeskComboBox.md) — Combo box base
-- [UniDeskTextStyle](../cpp-ext/UniDeskTextStyle.md) — Text style
+- [UniDeskTextStyle](./cpp-ext/UniDeskTextStyle.md) — Text style

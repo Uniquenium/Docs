@@ -61,4 +61,4 @@ UniDeskComBox {
 ## Related
 
 - [UniDeskComboBox](./UniDeskComboBox.md) — Combo box base
-- [UniDeskComManager](./UniDeskComManager.md) — Component manager
+- [UniDeskComManager](./singletons/UniDeskComManager.md) — Component manager

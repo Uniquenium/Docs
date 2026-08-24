@@ -72,7 +72,7 @@ Uniquenium/
 
 ## 开发插件
 
-如需开发自定义插件，请参考 [插件开发指南](../../custom-developing/plugin.md) 和 [UniDeskPluginInterface](../controls-reference/cpp-ext/UniDeskPluginInterface.md)。
+如需开发自定义插件，请参考 [插件开发指南](./custom-developing/plugin.md) 和 [UniDeskPluginInterface](./controls-reference/cpp-ext/UniDeskPluginInterface.md)。
 
 ## 备注
 
