@@ -46,11 +46,11 @@ features:
     link: /controls-reference/overview.md
     linkText: 查看控件库
 
-  - title: 🔌 插件生态
-    icon: 🔌
-    details: 基于 C++ DLL + QML 的插件体系，官方提供官方插件包，也支持用户自行扩展新组件与后端能力
-    link: /official-plugins.md
-    linkText: 官方插件
+  - title: 💾 自动保存
+    icon: 💾
+    details: 所有组件变更即时自动保存，官方组件保证数据不丢失，无需手动操作即可保留每一次桌面调整
+    link: /component-encyclopedia/overview.md
+    linkText: 了解自动保存
 
   - title: 🧮 表达式动态文本
     icon: 🧮
@@ -58,17 +58,17 @@ features:
     link: /custom-developing/template.md
     linkText: 了解表达式
 
-  - title: ⚡ 快捷键 & 托盘
-    icon: ⚡
-    details: 全局热键绑定、系统托盘常驻、一键唤出主面板，桌面随叫随到
-    link: /controls-reference/singletons/UniDeskComManager.md
-    linkText: 设置快捷键
+  - title: 📚 组件层级关系
+    icon: 📚
+    details: 灵活的组件父子嵌套关系，支持壁纸层、置顶层、桌面层多级管理，自由组合构建复杂桌面布局
+    link: /component-encyclopedia/overview.md
+    linkText: 了解层级
 
-  - title: 🌐 跨平台支持
-    icon: 🌐
-    details: 基于 Qt 框架构建，原生支持 Windows 与 Linux 等多平台，一次开发多端部署，桌面自由不受限
-    link: /download.md
-    linkText: 查看支持的平台
+  - title: ✂️ 尺寸可视化编辑
+    icon: ✂️
+    details: 可视化拖拽移动、实时调整宽高、自由旋转角度，所见即所得的组件编辑体验，精细控制每一个像素
+    link: /controls-reference/UniDeskComRectEditor.md
+    linkText: 了解编辑器
 ---
 
 ## Uniquenium 是什么？
@@ -194,20 +194,20 @@ sequenceDiagram
 - **扩展支持**：插件系统 + 模板系统
 :::
 
-### 桌面美化
-- 自定义壁纸层，支持多图轮播和网络壁纸 API
-- 全局光标样式自定义
-- 窗口透明与亚克力模糊效果
+### 高度自由
+- 多页面独立管理，组件层级自由嵌套（壁纸层 / 桌面层 / 置顶层）
+- 每一个组件都可自由移动、调整尺寸、旋转角度，所见即所得
+- 全控件 QML 源码可改写，外观行为深度定制无限制
 
-### 实用工具
-- 组件化桌面面板（待办、时钟、天气、日历等）
-- 系统托盘图标与快速菜单
-- 全局快捷键绑定
+### 即开即用
+- 官方组件自动保存，所有调整无需手动一键留存
+- 丰富的内置控件库覆盖常见场景，模板一键导入快速布局
+- 表达式引擎实时渲染动态内容，轻松接入系统数据与外部 API
 
-### 开发者友好
-- 完整的 UniDesk 控件库文档
-- 插件开发指南与 API 参考
-- 可视化组件编辑器
+### 生态扩展
+- 完整的官方插件包，提供计算器、截图、颜色拾取等实用组件
+- 基于 C++ DLL + QML 的开放插件体系，支持自定义后端与组件扩展
+- 完善的开发文档与 API 参考，降低自定义开发门槛
 
 ## 快速开始
 

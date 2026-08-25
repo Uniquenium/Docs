@@ -46,11 +46,11 @@ features:
     link: /en/controls-reference/overview.md
     linkText: Browse the control library
 
-  - title: Plugin Ecosystem
-    icon: 🔌
-    details: C++ DLL + QML plugin architecture. Install the official plugin pack, or extend new components and backends yourself
-    link: /en/official-plugins.md
-    linkText: Official plugins
+  - title: Auto-Save
+    icon: 💾
+    details: All component changes are saved instantly and automatically. Official components guarantee zero data loss — every adjustment is preserved without manual intervention
+    link: /en/component-encyclopedia/overview.md
+    linkText: Learn about auto-save
 
   - title: Dynamic Text via Expressions
     icon: 🧮
@@ -58,17 +58,17 @@ features:
     link: /en/custom-developing/template.md
     linkText: Learn about expressions
 
-  - title: Shortcuts & Tray
-    icon: ⚡
-    details: Global hotkeys, a persistent system tray and one-click access to the main panel — your desktop, always one keystroke away
-    link: /en/controls-reference/singletons/UniDeskComManager.md
-    linkText: Configure shortcuts
+  - title: Component Hierarchy
+    icon: 📚
+    details: Flexible parent-child component nesting with multi-layer management including wallpaper layer, topmost layer and desktop layer, freely combine to build complex layouts
+    link: /en/component-encyclopedia/overview.md
+    linkText: Learn about layers
 
-  - title: Cross-Platform Support
-    icon: 🌐
-    details: Built on the Qt framework with native support for Windows and Linux. Write once, deploy across platforms — your freedom is not limited
-    link: /en/download.md
-    linkText: View supported platforms
+  - title: Visual Size Editor
+    icon: ✂️
+    details: Visual drag-and-drop movement, real-time width/height adjustment, and free rotation — a WYSIWYG component editing experience with pixel-level precision
+    link: /en/controls-reference/UniDeskComRectEditor.md
+    linkText: Learn the editor
 ---
 
 ## What is Uniquenium?
@@ -194,20 +194,20 @@ sequenceDiagram
 - **Extension Support**: Plugin system + Template system
 :::
 
-### Desktop Beautification
-- Custom wallpaper layer with multi-image carousel and network wallpaper API support
-- Global cursor style customization
-- Window transparency and Acrylic blur effects
+### Highly Customizable
+- Independent multi-page management with freely nested component hierarchies (Wallpaper / Desktop / Topmost layers)
+- Every component can be freely moved, resized and rotated — truly what-you-see-is-what-you-get
+- Full QML source code for all controls is modifiable, enabling unlimited deep customization of look and behavior
 
-### Utilities
-- Component-based desktop panels (to-do, clock, weather, calendar, etc.)
-- System tray icon and quick menu
-- Global shortcut binding
+### Ready to Use
+- Official components are auto-saved by default — no manual action needed, every change persists instantly
+- Rich built-in control library covers common use cases; one-click template import gets you set up fast
+- Expression engine renders dynamic content in real time, easily hooking into system data and external APIs
 
-### Developer Friendly
-- Complete UniDesk control library documentation
-- Plugin development guide and API reference
-- Visual component editor
+### Extensible Ecosystem
+- Complete official plugin pack including calculator, screen capture, color picker and more utilities
+- Open plugin architecture based on C++ DLL + QML, supporting custom backends and component extensions
+- Thorough development documentation and API references to lower the barrier for custom development
 
 ## Quick Start
 
