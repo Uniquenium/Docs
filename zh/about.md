@@ -8,7 +8,7 @@ editLink: true
 
 ## 项目简介
 
-**Uniquenium** 是一款开源的桌面自定义工具，致力于将桌面美化与实用功能完美结合。项目名称由 "Unique"（独特）+ "Quantum"（量子）组合而来，寓意着为每位用户创造独一无二的桌面体验。
+**Uniquenium** 是一款开源的桌面自定义工具，致力于可定制的桌面环境。项目名称由 "Unique"（独特）+ "Quantum"（量子）组合而来，寓意着为每位用户创造独一无二的桌面体验。
 
 我们相信，桌面不只是工作的起点，更是表达个性的画布。
 
@@ -17,9 +17,8 @@ editLink: true
 - 🔌 **开放**：插件与模板系统，无限扩展可能
 - 💝 **免费**：完全开源免费，社区驱动开发
 
-## 项目背景
-
-Uniquenium 诞生于对现有桌面工具的不满足——要么功能臃肿难用，要么界面陈旧不堪。项目创始人 [Admibrill](https://github.com/admibrill) 决定亲手打造一款既好看又好用的桌面扩展工具。
+## 贡献者
+- [Admibrill](https://github.com/admibrill) 
 
 从最初的简单面板原型，到现在拥有完整控件库、插件系统、模板机制的成熟项目，离不开每一位贡献者的努力。
 
@@ -53,6 +52,9 @@ Uniquenium 离不开以下开源项目和个人的支持：
 ### 社区与用户
 感谢每一位提交 Issue、PR、翻译文档、分享模板的社区成员 ❤️
 
+QQ群: 1107749494
+Discord: [Uniquenium](https://discord.gg/Cqq9sRkrW2)
+
 ## 许可证
 
 ### 代码许可
@@ -73,7 +75,6 @@ Uniquenium 项目代码遵循 **GNU General Public License v3.0** 开源协议�
 
 你可以通过以下方式查看版本：
 - **程序内**：设置 → 关于 → 版本号
-- **命令行**：`Uniquenium0 --version`
 - **代码中**：
   ```qml
   import UniDesk
@@ -121,14 +122,13 @@ Uniquenium 项目代码遵循 **GNU General Public License v3.0** 开源协议�
 
 ## 路线图
 
-想知道我们正在做什么？查看公开的 [TODO 列表](https://github.com/Uniquenium/Uniquenium/blob/main/TODO.md)，包括：
+想知道我们正在做什么？查看公开的 [主程序TODO 列表](https://github.com/Uniquenium/Uniquenium/blob/main/TODO.md)和 [插件TODO 列表](https://github.com/Uniquenium/OfficialPlugin/blob/main/TODO.md)，包括：
 - ✅ Linux 平台支持（开发中）
 - ✅ 更多官方插件组件（计算器、截屏、天气等）
-- ✅ 移动端/平板适配
-- ✅ 云同步功能
 
 ---
 
 **Made with ❤️ by Uniquenium Development Team**
 
 > 「让桌面，回归你想要的样子。」
+

@@ -8,20 +8,19 @@ editLink: true
 
 ## Project Introduction
 
-**Uniquenium** is an open-source desktop customization tool dedicated to perfectly combining desktop beautification with practical functionality. The project name is derived from "Unique" + "Quantum," signifying the creation of a unique desktop experience for every user.
+**Uniquenium** is an open-source desktop customization tool dedicated to a customizable desktop environment. The project name combines "Unique" + "Quantum," signifying the creation of a one-of-a-kind desktop experience for every user.
 
-We believe the desktop is not just a starting point for work, but also a canvas for expressing individuality.
+We believe the desktop is more than just a starting point for work — it is a canvas for expressing individuality.
 
-- **Beautiful**: Modern Fluent design language, seamless dark/light theme switching
-- **Flexible**: Component-based architecture, mix and match your desktop as you wish
-- **Open**: Plugin and template system, infinite extension possibilities
-- **Free**: Completely open-source and free, community-driven development
+- 🎨 **Beautiful**: Modern Fluent design language, seamless dark/light theme switching
+- 🧩 **Flexible**: Component-based architecture, mix and match your desktop exactly how you want
+- 🔌 **Open**: Plugin and template system, infinite extension possibilities
+- 💝 **Free**: Fully open-source and free of charge, community-driven development
 
-## Project Background
+## Contributors
+- [Admibrill](https://github.com/admibrill) 
 
-Uniquenium was born out of dissatisfaction with existing desktop tools — either bloated and difficult to use, or outdated in appearance. The project founder [Admibrill](https://github.com/admibrill) decided to create a desktop extension tool that is both beautiful and practical.
-
-From an initial simple panel prototype to a mature project with a complete control library, plugin system, and template mechanism, the effort of every contributor is indispensable.
+From the initial simple panel prototype to today's mature project with a complete control library, plugin system and templating mechanism — none of this would have been possible without the effort of every contributor.
 
 ## Technology Stack
 
@@ -37,21 +36,24 @@ From an initial simple panel prototype to a mature project with a complete contr
 
 ## Acknowledgments
 
-Uniquenium cannot exist without the support of the following open-source projects and individuals:
+Uniquenium would not exist without the support of the following open-source projects and individuals:
 
 ### Core Contributors
-- [Admibrill](https://github.com/admibrill) - Project initiator and core developer
+- 💻 [Admibrill](https://github.com/admibrill) - Project initiator and core developer
 
 ### Open-Source Projects
-- [LingmoUI](https://github.com/LingmoOS/LingmoUI) - Design foundation for the UniDesk control library
-- [QHotkey](https://github.com/Skycoder42/QHotkey) - Cross-platform global hotkey support
-- [Remix Icons](https://www.remixicon.cn) - Beautiful open-source icon library
-- [ExprTk](https://github.com/ArashPartow/exprtk) - Mathematical expression parsing engine
-- [Qt6](https://www.qt.io/) - Powerful cross-platform C++ application framework
-- [ECM](https://invent.kde.org/frameworks/extra-cmake-modules) - Extra CMake Modules
+- 🎨 [LingmoUI](https://github.com/LingmoOS/LingmoUI) - Design foundation for the UniDesk control library
+- ⌨️ [QHotkey](https://github.com/Skycoder42/QHotkey) - Cross-platform global hotkey support
+- 🔤 [Remix Icons](https://www.remixicon.cn) - Beautiful open-source icon library
+- 🔢 [ExprTk](https://github.com/ArashPartow/exprtk) - Mathematical expression parsing engine
+- ⚡ [Qt6](https://www.qt.io/) - Powerful cross-platform C++ application framework
+- 📦 [ECM](https://invent.kde.org/frameworks/extra-cmake-modules) - Extra CMake Modules
 
 ### Community & Users
 Thanks to every community member who submits Issues, PRs, translates documentation, and shares templates ❤️
+
+QQ Group: 1107749494
+Discord: [Uniquenium](https://discord.gg/Cqq9sRkrW2)
 
 ## License
 
@@ -73,7 +75,6 @@ This documentation (Docs repository) is licensed under the **Creative Commons At
 
 You can view the version in the following ways:
 - **In the program**: Settings → About → Version number
-- **Command line**: `Uniquenium0 --version`
 - **In code**:
   ```qml
   import UniDesk
@@ -97,10 +98,10 @@ You can view the version in the following ways:
 We warmly welcome contributions of all forms!
 
 ### Ways for Beginners to Contribute
-1. **Improve Documentation**: Fix typos, add explanations, translate English docs
-2. **Report Bugs**: Submit detailed reproduction steps and environment information
-3. **Share Templates**: Export your beautifully designed page templates for others to use
-4. **Share Suggestions**: Share your usage experience and improvement ideas
+1. 📝 **Improve Documentation**: Fix typos, add clarifications, translate English docs
+2. 🐛 **Report Bugs**: Submit detailed reproduction steps and environment information
+3. 🎨 **Share Templates**: Export your beautifully designed page templates for others to use
+4. 💡 **Share Suggestions**: Share your usage experience and improvement ideas
 
 ### Code Contribution Process
 1. Fork the repository to your account
@@ -121,14 +122,12 @@ We warmly welcome contributions of all forms!
 
 ## Roadmap
 
-Want to know what we're working on? Check the public [TODO list](https://github.com/Uniquenium/Uniquenium/blob/main/TODO.md), including:
-- Linux platform support (in development)
-- More official plugin components (calculator, screenshot, weather, etc.)
-- Mobile/tablet adaptation
-- Cloud sync functionality
+Want to know what we're working on? Check out the public [Main Program TODO List](https://github.com/Uniquenium/Uniquenium/blob/main/TODO.md) and [Plugin TODO List](https://github.com/Uniquenium/OfficialPlugin/blob/main/TODO.md), including:
+- ✅ Linux platform support (in development)
+- ✅ More official plugin components (calculator, screenshot, weather, etc.)
 
 ---
 
 **Made with ❤️ by Uniquenium Development Team**
 
-> "Let the desktop return to how you want it to be."
+> 「Let the desktop return to how you want it to be.」
